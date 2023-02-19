@@ -33,7 +33,7 @@ func initDbSqlite() *korm_example.OrmAll {
 
 func initTableMysql() *korm_example.OrmAll {
 	db := korm_example.KORM_MustNewDbMysql(korm_example.KORM_MustNewDbMysqlReq{
-		Addr:        "192.168.232.128:3306",
+		Addr:        "127.0.0.1:3306",
 		UserName:    "root",
 		Password:    "",
 		UseDatabase: "test",
