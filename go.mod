@@ -5,7 +5,7 @@ go 1.19
 require (
 	github.com/glebarez/go-sqlite v1.20.3
 	github.com/go-sql-driver/mysql v1.7.0
-	github.com/orestonce/korm v0.0.0-20230219115940-7301ed5517cc
+	github.com/orestonce/korm v0.0.0-20230328133822-22a87afd63c1
 )
 
 require (

@@ -3,8 +3,11 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	_ "github.com/glebarez/go-sqlite"
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/orestonce/korm"
 	korm_example "korm-example"
+	"os"
 )
 
 func main() {
@@ -18,12 +21,15 @@ func main() {
 		korm_example.Test01Crud_Delete(db)
 		korm_example.Test02MultiplePk(db)
 		korm_example.Test03LeftJoin(db)
+		korm_example.Test05View(db)
 		fmt.Println("done", idx)
 	}
 }
 
 func initDbSqlite() *korm_example.OrmAll {
-	db, err := sql.Open("sqlite", "D:/1234.sqlite3")
+	const f = "D:/1234.sqlite3"
+	os.Remove(f)
+	db, err := sql.Open("sqlite", f)
 	if err != nil {
 		panic(err)
 	}
