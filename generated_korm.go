@@ -1293,48 +1293,96 @@ func (this *KORM_DownloadCache_D_SelectObj) MustRun_ResultListWithTotalMatch() (
 }
 
 type KORM_Where_KORM_DownloadCache_D_SelectObj_Url struct {
-	supper *KORM_DownloadCache_D_SelectObj
+	supper      *KORM_DownloadCache_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_DownloadCache_D_SelectObj) Where_Url() *KORM_Where_KORM_DownloadCache_D_SelectObj_Url {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`Url` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_DownloadCache_D_SelectObj_Url{supper: this}
+	return &KORM_Where_KORM_DownloadCache_D_SelectObj_Url{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_DownloadCache_D_SelectObj_Url) Equal(Url string) *KORM_DownloadCache_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Url` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Url)
 	return this.supper
 }
 func (this *KORM_Where_KORM_DownloadCache_D_SelectObj_Url) NotEqual(Url string) *KORM_DownloadCache_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Url` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Url)
 	return this.supper
 }
 func (this *KORM_Where_KORM_DownloadCache_D_SelectObj_Url) Greater(Url string) *KORM_DownloadCache_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Url` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Url)
 	return this.supper
 }
 func (this *KORM_Where_KORM_DownloadCache_D_SelectObj_Url) GreaterOrEqual(Url string) *KORM_DownloadCache_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Url` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Url)
 	return this.supper
 }
 func (this *KORM_Where_KORM_DownloadCache_D_SelectObj_Url) Less(Url string) *KORM_DownloadCache_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Url` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Url)
 	return this.supper
 }
 func (this *KORM_Where_KORM_DownloadCache_D_SelectObj_Url) LessOrEqual(Url string) *KORM_DownloadCache_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Url` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Url)
 	return this.supper
@@ -1353,6 +1401,182 @@ func (this *KORM_Where_KORM_DownloadCache_D_SelectObj_Url) In(vList []string) *K
 		this.supper.argsWhere = append(this.supper.argsWhere, v)
 	}
 	this.supper.bufWhere.WriteString(") ")
+	return this.supper
+}
+
+type KORM_Where_KORM_DownloadCache_D_SelectObj_Url_Length struct {
+	supper      *KORM_DownloadCache_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_DownloadCache_D_SelectObj_Url) Length() *KORM_Where_KORM_DownloadCache_D_SelectObj_Url_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_DownloadCache_D_SelectObj_Url_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_DownloadCache_D_SelectObj_Url_Length) Equal(length int) *KORM_DownloadCache_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Url`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_DownloadCache_D_SelectObj_Url_Length) NotEqual(length int) *KORM_DownloadCache_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Url`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_DownloadCache_D_SelectObj_Url_Length) GreaterOrEqual(length int) *KORM_DownloadCache_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Url`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_DownloadCache_D_SelectObj_Url_Length) Less(length int) *KORM_DownloadCache_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Url`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_DownloadCache_D_SelectObj_Url_Length) LessOrEqual(length int) *KORM_DownloadCache_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Url`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
+type KORM_Where_KORM_DownloadCache_D_SelectObj_Content struct {
+	supper      *KORM_DownloadCache_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_DownloadCache_D_SelectObj) Where_Content() *KORM_Where_KORM_DownloadCache_D_SelectObj_Content {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_DownloadCache_D_SelectObj_Content{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+
+type KORM_Where_KORM_DownloadCache_D_SelectObj_Content_Length struct {
+	supper      *KORM_DownloadCache_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_DownloadCache_D_SelectObj_Content) Length() *KORM_Where_KORM_DownloadCache_D_SelectObj_Content_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_DownloadCache_D_SelectObj_Content_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_DownloadCache_D_SelectObj_Content_Length) Equal(length int) *KORM_DownloadCache_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Content`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_DownloadCache_D_SelectObj_Content_Length) NotEqual(length int) *KORM_DownloadCache_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Content`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_DownloadCache_D_SelectObj_Content_Length) GreaterOrEqual(length int) *KORM_DownloadCache_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Content`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_DownloadCache_D_SelectObj_Content_Length) Less(length int) *KORM_DownloadCache_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Content`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_DownloadCache_D_SelectObj_Content_Length) LessOrEqual(length int) *KORM_DownloadCache_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Content`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
 	return this.supper
 }
 func (this *KORM_DownloadCache_D_SelectObj) CondMultOpBegin_AND() *KORM_DownloadCache_D_SelectObj {
@@ -1441,48 +1665,96 @@ func (this *KORM_DownloadCache_D_UpdateObj) MustRun() (RowsAffected int64) {
 }
 
 type KORM_Where_KORM_DownloadCache_D_UpdateObj_Url struct {
-	supper *KORM_DownloadCache_D_UpdateObj
+	supper      *KORM_DownloadCache_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_DownloadCache_D_UpdateObj) Where_Url() *KORM_Where_KORM_DownloadCache_D_UpdateObj_Url {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`Url` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_DownloadCache_D_UpdateObj_Url{supper: this}
+	return &KORM_Where_KORM_DownloadCache_D_UpdateObj_Url{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_DownloadCache_D_UpdateObj_Url) Equal(Url string) *KORM_DownloadCache_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Url` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Url)
 	return this.supper
 }
 func (this *KORM_Where_KORM_DownloadCache_D_UpdateObj_Url) NotEqual(Url string) *KORM_DownloadCache_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Url` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Url)
 	return this.supper
 }
 func (this *KORM_Where_KORM_DownloadCache_D_UpdateObj_Url) Greater(Url string) *KORM_DownloadCache_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Url` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Url)
 	return this.supper
 }
 func (this *KORM_Where_KORM_DownloadCache_D_UpdateObj_Url) GreaterOrEqual(Url string) *KORM_DownloadCache_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Url` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Url)
 	return this.supper
 }
 func (this *KORM_Where_KORM_DownloadCache_D_UpdateObj_Url) Less(Url string) *KORM_DownloadCache_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Url` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Url)
 	return this.supper
 }
 func (this *KORM_Where_KORM_DownloadCache_D_UpdateObj_Url) LessOrEqual(Url string) *KORM_DownloadCache_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Url` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Url)
 	return this.supper
@@ -1501,6 +1773,182 @@ func (this *KORM_Where_KORM_DownloadCache_D_UpdateObj_Url) In(vList []string) *K
 		this.supper.argsWhere = append(this.supper.argsWhere, v)
 	}
 	this.supper.bufWhere.WriteString(") ")
+	return this.supper
+}
+
+type KORM_Where_KORM_DownloadCache_D_UpdateObj_Url_Length struct {
+	supper      *KORM_DownloadCache_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_DownloadCache_D_UpdateObj_Url) Length() *KORM_Where_KORM_DownloadCache_D_UpdateObj_Url_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_DownloadCache_D_UpdateObj_Url_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_DownloadCache_D_UpdateObj_Url_Length) Equal(length int) *KORM_DownloadCache_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Url`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_DownloadCache_D_UpdateObj_Url_Length) NotEqual(length int) *KORM_DownloadCache_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Url`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_DownloadCache_D_UpdateObj_Url_Length) GreaterOrEqual(length int) *KORM_DownloadCache_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Url`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_DownloadCache_D_UpdateObj_Url_Length) Less(length int) *KORM_DownloadCache_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Url`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_DownloadCache_D_UpdateObj_Url_Length) LessOrEqual(length int) *KORM_DownloadCache_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Url`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
+type KORM_Where_KORM_DownloadCache_D_UpdateObj_Content struct {
+	supper      *KORM_DownloadCache_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_DownloadCache_D_UpdateObj) Where_Content() *KORM_Where_KORM_DownloadCache_D_UpdateObj_Content {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_DownloadCache_D_UpdateObj_Content{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+
+type KORM_Where_KORM_DownloadCache_D_UpdateObj_Content_Length struct {
+	supper      *KORM_DownloadCache_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_DownloadCache_D_UpdateObj_Content) Length() *KORM_Where_KORM_DownloadCache_D_UpdateObj_Content_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_DownloadCache_D_UpdateObj_Content_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_DownloadCache_D_UpdateObj_Content_Length) Equal(length int) *KORM_DownloadCache_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Content`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_DownloadCache_D_UpdateObj_Content_Length) NotEqual(length int) *KORM_DownloadCache_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Content`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_DownloadCache_D_UpdateObj_Content_Length) GreaterOrEqual(length int) *KORM_DownloadCache_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Content`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_DownloadCache_D_UpdateObj_Content_Length) Less(length int) *KORM_DownloadCache_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Content`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_DownloadCache_D_UpdateObj_Content_Length) LessOrEqual(length int) *KORM_DownloadCache_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Content`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
 	return this.supper
 }
 func (this *KORM_DownloadCache_D_UpdateObj) CondMultOpBegin_AND() *KORM_DownloadCache_D_UpdateObj {
@@ -1568,48 +2016,96 @@ func (this *KORM_DownloadCache_D_DeleteObj) MustRun() (RowsAffected int64) {
 }
 
 type KORM_Where_KORM_DownloadCache_D_DeleteObj_Url struct {
-	supper *KORM_DownloadCache_D_DeleteObj
+	supper      *KORM_DownloadCache_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_DownloadCache_D_DeleteObj) Where_Url() *KORM_Where_KORM_DownloadCache_D_DeleteObj_Url {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`Url` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_DownloadCache_D_DeleteObj_Url{supper: this}
+	return &KORM_Where_KORM_DownloadCache_D_DeleteObj_Url{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_DownloadCache_D_DeleteObj_Url) Equal(Url string) *KORM_DownloadCache_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Url` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Url)
 	return this.supper
 }
 func (this *KORM_Where_KORM_DownloadCache_D_DeleteObj_Url) NotEqual(Url string) *KORM_DownloadCache_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Url` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Url)
 	return this.supper
 }
 func (this *KORM_Where_KORM_DownloadCache_D_DeleteObj_Url) Greater(Url string) *KORM_DownloadCache_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Url` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Url)
 	return this.supper
 }
 func (this *KORM_Where_KORM_DownloadCache_D_DeleteObj_Url) GreaterOrEqual(Url string) *KORM_DownloadCache_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Url` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Url)
 	return this.supper
 }
 func (this *KORM_Where_KORM_DownloadCache_D_DeleteObj_Url) Less(Url string) *KORM_DownloadCache_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Url` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Url)
 	return this.supper
 }
 func (this *KORM_Where_KORM_DownloadCache_D_DeleteObj_Url) LessOrEqual(Url string) *KORM_DownloadCache_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Url` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Url)
 	return this.supper
@@ -1628,6 +2124,182 @@ func (this *KORM_Where_KORM_DownloadCache_D_DeleteObj_Url) In(vList []string) *K
 		this.supper.argsWhere = append(this.supper.argsWhere, v)
 	}
 	this.supper.bufWhere.WriteString(") ")
+	return this.supper
+}
+
+type KORM_Where_KORM_DownloadCache_D_DeleteObj_Url_Length struct {
+	supper      *KORM_DownloadCache_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_DownloadCache_D_DeleteObj_Url) Length() *KORM_Where_KORM_DownloadCache_D_DeleteObj_Url_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_DownloadCache_D_DeleteObj_Url_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_DownloadCache_D_DeleteObj_Url_Length) Equal(length int) *KORM_DownloadCache_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Url`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_DownloadCache_D_DeleteObj_Url_Length) NotEqual(length int) *KORM_DownloadCache_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Url`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_DownloadCache_D_DeleteObj_Url_Length) GreaterOrEqual(length int) *KORM_DownloadCache_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Url`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_DownloadCache_D_DeleteObj_Url_Length) Less(length int) *KORM_DownloadCache_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Url`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_DownloadCache_D_DeleteObj_Url_Length) LessOrEqual(length int) *KORM_DownloadCache_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Url`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
+type KORM_Where_KORM_DownloadCache_D_DeleteObj_Content struct {
+	supper      *KORM_DownloadCache_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_DownloadCache_D_DeleteObj) Where_Content() *KORM_Where_KORM_DownloadCache_D_DeleteObj_Content {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_DownloadCache_D_DeleteObj_Content{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+
+type KORM_Where_KORM_DownloadCache_D_DeleteObj_Content_Length struct {
+	supper      *KORM_DownloadCache_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_DownloadCache_D_DeleteObj_Content) Length() *KORM_Where_KORM_DownloadCache_D_DeleteObj_Content_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_DownloadCache_D_DeleteObj_Content_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_DownloadCache_D_DeleteObj_Content_Length) Equal(length int) *KORM_DownloadCache_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Content`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_DownloadCache_D_DeleteObj_Content_Length) NotEqual(length int) *KORM_DownloadCache_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Content`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_DownloadCache_D_DeleteObj_Content_Length) GreaterOrEqual(length int) *KORM_DownloadCache_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Content`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_DownloadCache_D_DeleteObj_Content_Length) Less(length int) *KORM_DownloadCache_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Content`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_DownloadCache_D_DeleteObj_Content_Length) LessOrEqual(length int) *KORM_DownloadCache_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Content`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
 	return this.supper
 }
 func (this *KORM_DownloadCache_D_DeleteObj) CondMultOpBegin_AND() *KORM_DownloadCache_D_DeleteObj {
@@ -2069,48 +2741,96 @@ func (this *KORM_test01Crud_D_SelectObj) MustRun_ResultListWithTotalMatch() (lis
 }
 
 type KORM_Where_KORM_test01Crud_D_SelectObj_Id struct {
-	supper *KORM_test01Crud_D_SelectObj
+	supper      *KORM_test01Crud_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test01Crud_D_SelectObj) Where_Id() *KORM_Where_KORM_test01Crud_D_SelectObj_Id {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`Id` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test01Crud_D_SelectObj_Id{supper: this}
+	return &KORM_Where_KORM_test01Crud_D_SelectObj_Id{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test01Crud_D_SelectObj_Id) Equal(Id int) *KORM_test01Crud_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test01Crud_D_SelectObj_Id) NotEqual(Id int) *KORM_test01Crud_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test01Crud_D_SelectObj_Id) Greater(Id int) *KORM_test01Crud_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test01Crud_D_SelectObj_Id) GreaterOrEqual(Id int) *KORM_test01Crud_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test01Crud_D_SelectObj_Id) Less(Id int) *KORM_test01Crud_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test01Crud_D_SelectObj_Id) LessOrEqual(Id int) *KORM_test01Crud_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
@@ -2133,48 +2853,96 @@ func (this *KORM_Where_KORM_test01Crud_D_SelectObj_Id) In(vList []int) *KORM_tes
 }
 
 type KORM_Where_KORM_test01Crud_D_SelectObj_Name struct {
-	supper *KORM_test01Crud_D_SelectObj
+	supper      *KORM_test01Crud_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test01Crud_D_SelectObj) Where_Name() *KORM_Where_KORM_test01Crud_D_SelectObj_Name {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`Name` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test01Crud_D_SelectObj_Name{supper: this}
+	return &KORM_Where_KORM_test01Crud_D_SelectObj_Name{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test01Crud_D_SelectObj_Name) Equal(Name string) *KORM_test01Crud_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test01Crud_D_SelectObj_Name) NotEqual(Name string) *KORM_test01Crud_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test01Crud_D_SelectObj_Name) Greater(Name string) *KORM_test01Crud_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test01Crud_D_SelectObj_Name) GreaterOrEqual(Name string) *KORM_test01Crud_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test01Crud_D_SelectObj_Name) Less(Name string) *KORM_test01Crud_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test01Crud_D_SelectObj_Name) LessOrEqual(Name string) *KORM_test01Crud_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
@@ -2193,6 +2961,88 @@ func (this *KORM_Where_KORM_test01Crud_D_SelectObj_Name) In(vList []string) *KOR
 		this.supper.argsWhere = append(this.supper.argsWhere, v)
 	}
 	this.supper.bufWhere.WriteString(") ")
+	return this.supper
+}
+
+type KORM_Where_KORM_test01Crud_D_SelectObj_Name_Length struct {
+	supper      *KORM_test01Crud_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test01Crud_D_SelectObj_Name) Length() *KORM_Where_KORM_test01Crud_D_SelectObj_Name_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test01Crud_D_SelectObj_Name_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test01Crud_D_SelectObj_Name_Length) Equal(length int) *KORM_test01Crud_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test01Crud_D_SelectObj_Name_Length) NotEqual(length int) *KORM_test01Crud_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test01Crud_D_SelectObj_Name_Length) GreaterOrEqual(length int) *KORM_test01Crud_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test01Crud_D_SelectObj_Name_Length) Less(length int) *KORM_test01Crud_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test01Crud_D_SelectObj_Name_Length) LessOrEqual(length int) *KORM_test01Crud_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
 	return this.supper
 }
 func (this *KORM_test01Crud_D_SelectObj) CondMultOpBegin_AND() *KORM_test01Crud_D_SelectObj {
@@ -2281,48 +3131,96 @@ func (this *KORM_test01Crud_D_UpdateObj) MustRun() (RowsAffected int64) {
 }
 
 type KORM_Where_KORM_test01Crud_D_UpdateObj_Id struct {
-	supper *KORM_test01Crud_D_UpdateObj
+	supper      *KORM_test01Crud_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test01Crud_D_UpdateObj) Where_Id() *KORM_Where_KORM_test01Crud_D_UpdateObj_Id {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`Id` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test01Crud_D_UpdateObj_Id{supper: this}
+	return &KORM_Where_KORM_test01Crud_D_UpdateObj_Id{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test01Crud_D_UpdateObj_Id) Equal(Id int) *KORM_test01Crud_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test01Crud_D_UpdateObj_Id) NotEqual(Id int) *KORM_test01Crud_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test01Crud_D_UpdateObj_Id) Greater(Id int) *KORM_test01Crud_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test01Crud_D_UpdateObj_Id) GreaterOrEqual(Id int) *KORM_test01Crud_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test01Crud_D_UpdateObj_Id) Less(Id int) *KORM_test01Crud_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test01Crud_D_UpdateObj_Id) LessOrEqual(Id int) *KORM_test01Crud_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
@@ -2345,48 +3243,96 @@ func (this *KORM_Where_KORM_test01Crud_D_UpdateObj_Id) In(vList []int) *KORM_tes
 }
 
 type KORM_Where_KORM_test01Crud_D_UpdateObj_Name struct {
-	supper *KORM_test01Crud_D_UpdateObj
+	supper      *KORM_test01Crud_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test01Crud_D_UpdateObj) Where_Name() *KORM_Where_KORM_test01Crud_D_UpdateObj_Name {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`Name` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test01Crud_D_UpdateObj_Name{supper: this}
+	return &KORM_Where_KORM_test01Crud_D_UpdateObj_Name{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test01Crud_D_UpdateObj_Name) Equal(Name string) *KORM_test01Crud_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test01Crud_D_UpdateObj_Name) NotEqual(Name string) *KORM_test01Crud_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test01Crud_D_UpdateObj_Name) Greater(Name string) *KORM_test01Crud_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test01Crud_D_UpdateObj_Name) GreaterOrEqual(Name string) *KORM_test01Crud_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test01Crud_D_UpdateObj_Name) Less(Name string) *KORM_test01Crud_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test01Crud_D_UpdateObj_Name) LessOrEqual(Name string) *KORM_test01Crud_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
@@ -2405,6 +3351,88 @@ func (this *KORM_Where_KORM_test01Crud_D_UpdateObj_Name) In(vList []string) *KOR
 		this.supper.argsWhere = append(this.supper.argsWhere, v)
 	}
 	this.supper.bufWhere.WriteString(") ")
+	return this.supper
+}
+
+type KORM_Where_KORM_test01Crud_D_UpdateObj_Name_Length struct {
+	supper      *KORM_test01Crud_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test01Crud_D_UpdateObj_Name) Length() *KORM_Where_KORM_test01Crud_D_UpdateObj_Name_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test01Crud_D_UpdateObj_Name_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test01Crud_D_UpdateObj_Name_Length) Equal(length int) *KORM_test01Crud_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test01Crud_D_UpdateObj_Name_Length) NotEqual(length int) *KORM_test01Crud_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test01Crud_D_UpdateObj_Name_Length) GreaterOrEqual(length int) *KORM_test01Crud_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test01Crud_D_UpdateObj_Name_Length) Less(length int) *KORM_test01Crud_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test01Crud_D_UpdateObj_Name_Length) LessOrEqual(length int) *KORM_test01Crud_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
 	return this.supper
 }
 func (this *KORM_test01Crud_D_UpdateObj) CondMultOpBegin_AND() *KORM_test01Crud_D_UpdateObj {
@@ -2472,48 +3500,96 @@ func (this *KORM_test01Crud_D_DeleteObj) MustRun() (RowsAffected int64) {
 }
 
 type KORM_Where_KORM_test01Crud_D_DeleteObj_Id struct {
-	supper *KORM_test01Crud_D_DeleteObj
+	supper      *KORM_test01Crud_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test01Crud_D_DeleteObj) Where_Id() *KORM_Where_KORM_test01Crud_D_DeleteObj_Id {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`Id` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test01Crud_D_DeleteObj_Id{supper: this}
+	return &KORM_Where_KORM_test01Crud_D_DeleteObj_Id{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test01Crud_D_DeleteObj_Id) Equal(Id int) *KORM_test01Crud_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test01Crud_D_DeleteObj_Id) NotEqual(Id int) *KORM_test01Crud_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test01Crud_D_DeleteObj_Id) Greater(Id int) *KORM_test01Crud_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test01Crud_D_DeleteObj_Id) GreaterOrEqual(Id int) *KORM_test01Crud_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test01Crud_D_DeleteObj_Id) Less(Id int) *KORM_test01Crud_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test01Crud_D_DeleteObj_Id) LessOrEqual(Id int) *KORM_test01Crud_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
@@ -2536,48 +3612,96 @@ func (this *KORM_Where_KORM_test01Crud_D_DeleteObj_Id) In(vList []int) *KORM_tes
 }
 
 type KORM_Where_KORM_test01Crud_D_DeleteObj_Name struct {
-	supper *KORM_test01Crud_D_DeleteObj
+	supper      *KORM_test01Crud_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test01Crud_D_DeleteObj) Where_Name() *KORM_Where_KORM_test01Crud_D_DeleteObj_Name {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`Name` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test01Crud_D_DeleteObj_Name{supper: this}
+	return &KORM_Where_KORM_test01Crud_D_DeleteObj_Name{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test01Crud_D_DeleteObj_Name) Equal(Name string) *KORM_test01Crud_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test01Crud_D_DeleteObj_Name) NotEqual(Name string) *KORM_test01Crud_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test01Crud_D_DeleteObj_Name) Greater(Name string) *KORM_test01Crud_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test01Crud_D_DeleteObj_Name) GreaterOrEqual(Name string) *KORM_test01Crud_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test01Crud_D_DeleteObj_Name) Less(Name string) *KORM_test01Crud_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test01Crud_D_DeleteObj_Name) LessOrEqual(Name string) *KORM_test01Crud_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
@@ -2596,6 +3720,88 @@ func (this *KORM_Where_KORM_test01Crud_D_DeleteObj_Name) In(vList []string) *KOR
 		this.supper.argsWhere = append(this.supper.argsWhere, v)
 	}
 	this.supper.bufWhere.WriteString(") ")
+	return this.supper
+}
+
+type KORM_Where_KORM_test01Crud_D_DeleteObj_Name_Length struct {
+	supper      *KORM_test01Crud_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test01Crud_D_DeleteObj_Name) Length() *KORM_Where_KORM_test01Crud_D_DeleteObj_Name_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test01Crud_D_DeleteObj_Name_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test01Crud_D_DeleteObj_Name_Length) Equal(length int) *KORM_test01Crud_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test01Crud_D_DeleteObj_Name_Length) NotEqual(length int) *KORM_test01Crud_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test01Crud_D_DeleteObj_Name_Length) GreaterOrEqual(length int) *KORM_test01Crud_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test01Crud_D_DeleteObj_Name_Length) Less(length int) *KORM_test01Crud_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test01Crud_D_DeleteObj_Name_Length) LessOrEqual(length int) *KORM_test01Crud_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
 	return this.supper
 }
 func (this *KORM_test01Crud_D_DeleteObj) CondMultOpBegin_AND() *KORM_test01Crud_D_DeleteObj {
@@ -3049,48 +4255,96 @@ func (this *KORM_test02MultiplePk_D_SelectObj) MustRun_ResultListWithTotalMatch(
 }
 
 type KORM_Where_KORM_test02MultiplePk_D_SelectObj_UserId struct {
-	supper *KORM_test02MultiplePk_D_SelectObj
+	supper      *KORM_test02MultiplePk_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test02MultiplePk_D_SelectObj) Where_UserId() *KORM_Where_KORM_test02MultiplePk_D_SelectObj_UserId {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`UserId` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test02MultiplePk_D_SelectObj_UserId{supper: this}
+	return &KORM_Where_KORM_test02MultiplePk_D_SelectObj_UserId{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_SelectObj_UserId) Equal(UserId string) *KORM_test02MultiplePk_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`UserId` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_SelectObj_UserId) NotEqual(UserId string) *KORM_test02MultiplePk_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`UserId` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_SelectObj_UserId) Greater(UserId string) *KORM_test02MultiplePk_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`UserId` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_SelectObj_UserId) GreaterOrEqual(UserId string) *KORM_test02MultiplePk_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`UserId` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_SelectObj_UserId) Less(UserId string) *KORM_test02MultiplePk_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`UserId` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_SelectObj_UserId) LessOrEqual(UserId string) *KORM_test02MultiplePk_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`UserId` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
@@ -3112,49 +4366,179 @@ func (this *KORM_Where_KORM_test02MultiplePk_D_SelectObj_UserId) In(vList []stri
 	return this.supper
 }
 
+type KORM_Where_KORM_test02MultiplePk_D_SelectObj_UserId_Length struct {
+	supper      *KORM_test02MultiplePk_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test02MultiplePk_D_SelectObj_UserId) Length() *KORM_Where_KORM_test02MultiplePk_D_SelectObj_UserId_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test02MultiplePk_D_SelectObj_UserId_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test02MultiplePk_D_SelectObj_UserId_Length) Equal(length int) *KORM_test02MultiplePk_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test02MultiplePk_D_SelectObj_UserId_Length) NotEqual(length int) *KORM_test02MultiplePk_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test02MultiplePk_D_SelectObj_UserId_Length) GreaterOrEqual(length int) *KORM_test02MultiplePk_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test02MultiplePk_D_SelectObj_UserId_Length) Less(length int) *KORM_test02MultiplePk_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test02MultiplePk_D_SelectObj_UserId_Length) LessOrEqual(length int) *KORM_test02MultiplePk_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test02MultiplePk_D_SelectObj_GroupId struct {
-	supper *KORM_test02MultiplePk_D_SelectObj
+	supper      *KORM_test02MultiplePk_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test02MultiplePk_D_SelectObj) Where_GroupId() *KORM_Where_KORM_test02MultiplePk_D_SelectObj_GroupId {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`GroupId` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test02MultiplePk_D_SelectObj_GroupId{supper: this}
+	return &KORM_Where_KORM_test02MultiplePk_D_SelectObj_GroupId{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_SelectObj_GroupId) Equal(GroupId string) *KORM_test02MultiplePk_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`GroupId` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_SelectObj_GroupId) NotEqual(GroupId string) *KORM_test02MultiplePk_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`GroupId` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_SelectObj_GroupId) Greater(GroupId string) *KORM_test02MultiplePk_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`GroupId` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_SelectObj_GroupId) GreaterOrEqual(GroupId string) *KORM_test02MultiplePk_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`GroupId` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_SelectObj_GroupId) Less(GroupId string) *KORM_test02MultiplePk_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`GroupId` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_SelectObj_GroupId) LessOrEqual(GroupId string) *KORM_test02MultiplePk_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`GroupId` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
@@ -3176,48 +4560,169 @@ func (this *KORM_Where_KORM_test02MultiplePk_D_SelectObj_GroupId) In(vList []str
 	return this.supper
 }
 
+type KORM_Where_KORM_test02MultiplePk_D_SelectObj_GroupId_Length struct {
+	supper      *KORM_test02MultiplePk_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test02MultiplePk_D_SelectObj_GroupId) Length() *KORM_Where_KORM_test02MultiplePk_D_SelectObj_GroupId_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test02MultiplePk_D_SelectObj_GroupId_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test02MultiplePk_D_SelectObj_GroupId_Length) Equal(length int) *KORM_test02MultiplePk_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test02MultiplePk_D_SelectObj_GroupId_Length) NotEqual(length int) *KORM_test02MultiplePk_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test02MultiplePk_D_SelectObj_GroupId_Length) GreaterOrEqual(length int) *KORM_test02MultiplePk_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test02MultiplePk_D_SelectObj_GroupId_Length) Less(length int) *KORM_test02MultiplePk_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test02MultiplePk_D_SelectObj_GroupId_Length) LessOrEqual(length int) *KORM_test02MultiplePk_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test02MultiplePk_D_SelectObj_CreateTime struct {
-	supper *KORM_test02MultiplePk_D_SelectObj
+	supper      *KORM_test02MultiplePk_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test02MultiplePk_D_SelectObj) Where_CreateTime() *KORM_Where_KORM_test02MultiplePk_D_SelectObj_CreateTime {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`CreateTime` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test02MultiplePk_D_SelectObj_CreateTime{supper: this}
+	return &KORM_Where_KORM_test02MultiplePk_D_SelectObj_CreateTime{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_SelectObj_CreateTime) Equal(CreateTime time.Time) *KORM_test02MultiplePk_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_SelectObj_CreateTime) NotEqual(CreateTime time.Time) *KORM_test02MultiplePk_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_SelectObj_CreateTime) GreaterOrEqual(CreateTime time.Time) *KORM_test02MultiplePk_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_SelectObj_CreateTime) Less(CreateTime time.Time) *KORM_test02MultiplePk_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_SelectObj_CreateTime) LessOrEqual(CreateTime time.Time) *KORM_test02MultiplePk_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
@@ -3309,48 +4814,96 @@ func (this *KORM_test02MultiplePk_D_UpdateObj) MustRun() (RowsAffected int64) {
 }
 
 type KORM_Where_KORM_test02MultiplePk_D_UpdateObj_UserId struct {
-	supper *KORM_test02MultiplePk_D_UpdateObj
+	supper      *KORM_test02MultiplePk_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test02MultiplePk_D_UpdateObj) Where_UserId() *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_UserId {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`UserId` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test02MultiplePk_D_UpdateObj_UserId{supper: this}
+	return &KORM_Where_KORM_test02MultiplePk_D_UpdateObj_UserId{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_UserId) Equal(UserId string) *KORM_test02MultiplePk_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_UserId) NotEqual(UserId string) *KORM_test02MultiplePk_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_UserId) Greater(UserId string) *KORM_test02MultiplePk_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_UserId) GreaterOrEqual(UserId string) *KORM_test02MultiplePk_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_UserId) Less(UserId string) *KORM_test02MultiplePk_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_UserId) LessOrEqual(UserId string) *KORM_test02MultiplePk_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
@@ -3372,49 +4925,179 @@ func (this *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_UserId) In(vList []stri
 	return this.supper
 }
 
+type KORM_Where_KORM_test02MultiplePk_D_UpdateObj_UserId_Length struct {
+	supper      *KORM_test02MultiplePk_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_UserId) Length() *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_UserId_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test02MultiplePk_D_UpdateObj_UserId_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_UserId_Length) Equal(length int) *KORM_test02MultiplePk_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_UserId_Length) NotEqual(length int) *KORM_test02MultiplePk_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_UserId_Length) GreaterOrEqual(length int) *KORM_test02MultiplePk_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_UserId_Length) Less(length int) *KORM_test02MultiplePk_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_UserId_Length) LessOrEqual(length int) *KORM_test02MultiplePk_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test02MultiplePk_D_UpdateObj_GroupId struct {
-	supper *KORM_test02MultiplePk_D_UpdateObj
+	supper      *KORM_test02MultiplePk_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test02MultiplePk_D_UpdateObj) Where_GroupId() *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_GroupId {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`GroupId` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test02MultiplePk_D_UpdateObj_GroupId{supper: this}
+	return &KORM_Where_KORM_test02MultiplePk_D_UpdateObj_GroupId{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_GroupId) Equal(GroupId string) *KORM_test02MultiplePk_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_GroupId) NotEqual(GroupId string) *KORM_test02MultiplePk_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_GroupId) Greater(GroupId string) *KORM_test02MultiplePk_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_GroupId) GreaterOrEqual(GroupId string) *KORM_test02MultiplePk_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_GroupId) Less(GroupId string) *KORM_test02MultiplePk_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_GroupId) LessOrEqual(GroupId string) *KORM_test02MultiplePk_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
@@ -3436,48 +5119,169 @@ func (this *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_GroupId) In(vList []str
 	return this.supper
 }
 
+type KORM_Where_KORM_test02MultiplePk_D_UpdateObj_GroupId_Length struct {
+	supper      *KORM_test02MultiplePk_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_GroupId) Length() *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_GroupId_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test02MultiplePk_D_UpdateObj_GroupId_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_GroupId_Length) Equal(length int) *KORM_test02MultiplePk_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_GroupId_Length) NotEqual(length int) *KORM_test02MultiplePk_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_GroupId_Length) GreaterOrEqual(length int) *KORM_test02MultiplePk_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_GroupId_Length) Less(length int) *KORM_test02MultiplePk_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_GroupId_Length) LessOrEqual(length int) *KORM_test02MultiplePk_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test02MultiplePk_D_UpdateObj_CreateTime struct {
-	supper *KORM_test02MultiplePk_D_UpdateObj
+	supper      *KORM_test02MultiplePk_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test02MultiplePk_D_UpdateObj) Where_CreateTime() *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_CreateTime {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`CreateTime` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test02MultiplePk_D_UpdateObj_CreateTime{supper: this}
+	return &KORM_Where_KORM_test02MultiplePk_D_UpdateObj_CreateTime{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_CreateTime) Equal(CreateTime time.Time) *KORM_test02MultiplePk_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_CreateTime) NotEqual(CreateTime time.Time) *KORM_test02MultiplePk_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_CreateTime) GreaterOrEqual(CreateTime time.Time) *KORM_test02MultiplePk_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_CreateTime) Less(CreateTime time.Time) *KORM_test02MultiplePk_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_UpdateObj_CreateTime) LessOrEqual(CreateTime time.Time) *KORM_test02MultiplePk_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
@@ -3548,48 +5352,96 @@ func (this *KORM_test02MultiplePk_D_DeleteObj) MustRun() (RowsAffected int64) {
 }
 
 type KORM_Where_KORM_test02MultiplePk_D_DeleteObj_UserId struct {
-	supper *KORM_test02MultiplePk_D_DeleteObj
+	supper      *KORM_test02MultiplePk_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test02MultiplePk_D_DeleteObj) Where_UserId() *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_UserId {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`UserId` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test02MultiplePk_D_DeleteObj_UserId{supper: this}
+	return &KORM_Where_KORM_test02MultiplePk_D_DeleteObj_UserId{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_UserId) Equal(UserId string) *KORM_test02MultiplePk_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_UserId) NotEqual(UserId string) *KORM_test02MultiplePk_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_UserId) Greater(UserId string) *KORM_test02MultiplePk_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_UserId) GreaterOrEqual(UserId string) *KORM_test02MultiplePk_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_UserId) Less(UserId string) *KORM_test02MultiplePk_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_UserId) LessOrEqual(UserId string) *KORM_test02MultiplePk_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
@@ -3611,49 +5463,179 @@ func (this *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_UserId) In(vList []stri
 	return this.supper
 }
 
+type KORM_Where_KORM_test02MultiplePk_D_DeleteObj_UserId_Length struct {
+	supper      *KORM_test02MultiplePk_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_UserId) Length() *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_UserId_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test02MultiplePk_D_DeleteObj_UserId_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_UserId_Length) Equal(length int) *KORM_test02MultiplePk_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_UserId_Length) NotEqual(length int) *KORM_test02MultiplePk_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_UserId_Length) GreaterOrEqual(length int) *KORM_test02MultiplePk_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_UserId_Length) Less(length int) *KORM_test02MultiplePk_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_UserId_Length) LessOrEqual(length int) *KORM_test02MultiplePk_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test02MultiplePk_D_DeleteObj_GroupId struct {
-	supper *KORM_test02MultiplePk_D_DeleteObj
+	supper      *KORM_test02MultiplePk_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test02MultiplePk_D_DeleteObj) Where_GroupId() *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_GroupId {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`GroupId` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test02MultiplePk_D_DeleteObj_GroupId{supper: this}
+	return &KORM_Where_KORM_test02MultiplePk_D_DeleteObj_GroupId{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_GroupId) Equal(GroupId string) *KORM_test02MultiplePk_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_GroupId) NotEqual(GroupId string) *KORM_test02MultiplePk_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_GroupId) Greater(GroupId string) *KORM_test02MultiplePk_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_GroupId) GreaterOrEqual(GroupId string) *KORM_test02MultiplePk_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_GroupId) Less(GroupId string) *KORM_test02MultiplePk_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_GroupId) LessOrEqual(GroupId string) *KORM_test02MultiplePk_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
@@ -3675,48 +5657,169 @@ func (this *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_GroupId) In(vList []str
 	return this.supper
 }
 
+type KORM_Where_KORM_test02MultiplePk_D_DeleteObj_GroupId_Length struct {
+	supper      *KORM_test02MultiplePk_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_GroupId) Length() *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_GroupId_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test02MultiplePk_D_DeleteObj_GroupId_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_GroupId_Length) Equal(length int) *KORM_test02MultiplePk_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_GroupId_Length) NotEqual(length int) *KORM_test02MultiplePk_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_GroupId_Length) GreaterOrEqual(length int) *KORM_test02MultiplePk_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_GroupId_Length) Less(length int) *KORM_test02MultiplePk_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_GroupId_Length) LessOrEqual(length int) *KORM_test02MultiplePk_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test02MultiplePk_D_DeleteObj_CreateTime struct {
-	supper *KORM_test02MultiplePk_D_DeleteObj
+	supper      *KORM_test02MultiplePk_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test02MultiplePk_D_DeleteObj) Where_CreateTime() *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_CreateTime {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`CreateTime` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test02MultiplePk_D_DeleteObj_CreateTime{supper: this}
+	return &KORM_Where_KORM_test02MultiplePk_D_DeleteObj_CreateTime{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_CreateTime) Equal(CreateTime time.Time) *KORM_test02MultiplePk_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_CreateTime) NotEqual(CreateTime time.Time) *KORM_test02MultiplePk_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_CreateTime) GreaterOrEqual(CreateTime time.Time) *KORM_test02MultiplePk_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_CreateTime) Less(CreateTime time.Time) *KORM_test02MultiplePk_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test02MultiplePk_D_DeleteObj_CreateTime) LessOrEqual(CreateTime time.Time) *KORM_test02MultiplePk_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
@@ -4177,48 +6280,96 @@ func (this *KORM_test03User_D_SelectObj) MustRun_ResultListWithTotalMatch() (lis
 }
 
 type KORM_Where_KORM_test03User_D_SelectObj_Id struct {
-	supper *KORM_test03User_D_SelectObj
+	supper      *KORM_test03User_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03User_D_SelectObj) Where_Id() *KORM_Where_KORM_test03User_D_SelectObj_Id {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`Id` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test03User_D_SelectObj_Id{supper: this}
+	return &KORM_Where_KORM_test03User_D_SelectObj_Id{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test03User_D_SelectObj_Id) Equal(Id string) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_SelectObj_Id) NotEqual(Id string) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_SelectObj_Id) Greater(Id string) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_SelectObj_Id) GreaterOrEqual(Id string) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_SelectObj_Id) Less(Id string) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_SelectObj_Id) LessOrEqual(Id string) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
@@ -4240,49 +6391,179 @@ func (this *KORM_Where_KORM_test03User_D_SelectObj_Id) In(vList []string) *KORM_
 	return this.supper
 }
 
+type KORM_Where_KORM_test03User_D_SelectObj_Id_Length struct {
+	supper      *KORM_test03User_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test03User_D_SelectObj_Id) Length() *KORM_Where_KORM_test03User_D_SelectObj_Id_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test03User_D_SelectObj_Id_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test03User_D_SelectObj_Id_Length) Equal(length int) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_SelectObj_Id_Length) NotEqual(length int) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_SelectObj_Id_Length) GreaterOrEqual(length int) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_SelectObj_Id_Length) Less(length int) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_SelectObj_Id_Length) LessOrEqual(length int) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test03User_D_SelectObj_Name struct {
-	supper *KORM_test03User_D_SelectObj
+	supper      *KORM_test03User_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03User_D_SelectObj) Where_Name() *KORM_Where_KORM_test03User_D_SelectObj_Name {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`Name` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test03User_D_SelectObj_Name{supper: this}
+	return &KORM_Where_KORM_test03User_D_SelectObj_Name{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test03User_D_SelectObj_Name) Equal(Name string) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_SelectObj_Name) NotEqual(Name string) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_SelectObj_Name) Greater(Name string) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_SelectObj_Name) GreaterOrEqual(Name string) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_SelectObj_Name) Less(Name string) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_SelectObj_Name) LessOrEqual(Name string) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
@@ -4304,49 +6585,179 @@ func (this *KORM_Where_KORM_test03User_D_SelectObj_Name) In(vList []string) *KOR
 	return this.supper
 }
 
+type KORM_Where_KORM_test03User_D_SelectObj_Name_Length struct {
+	supper      *KORM_test03User_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test03User_D_SelectObj_Name) Length() *KORM_Where_KORM_test03User_D_SelectObj_Name_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test03User_D_SelectObj_Name_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test03User_D_SelectObj_Name_Length) Equal(length int) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_SelectObj_Name_Length) NotEqual(length int) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_SelectObj_Name_Length) GreaterOrEqual(length int) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_SelectObj_Name_Length) Less(length int) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_SelectObj_Name_Length) LessOrEqual(length int) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test03User_D_SelectObj_PasswordHash struct {
-	supper *KORM_test03User_D_SelectObj
+	supper      *KORM_test03User_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03User_D_SelectObj) Where_PasswordHash() *KORM_Where_KORM_test03User_D_SelectObj_PasswordHash {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`PasswordHash` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test03User_D_SelectObj_PasswordHash{supper: this}
+	return &KORM_Where_KORM_test03User_D_SelectObj_PasswordHash{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test03User_D_SelectObj_PasswordHash) Equal(PasswordHash string) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`PasswordHash` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, PasswordHash)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_SelectObj_PasswordHash) NotEqual(PasswordHash string) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`PasswordHash` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, PasswordHash)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_SelectObj_PasswordHash) Greater(PasswordHash string) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`PasswordHash` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, PasswordHash)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_SelectObj_PasswordHash) GreaterOrEqual(PasswordHash string) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`PasswordHash` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, PasswordHash)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_SelectObj_PasswordHash) Less(PasswordHash string) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`PasswordHash` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, PasswordHash)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_SelectObj_PasswordHash) LessOrEqual(PasswordHash string) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`PasswordHash` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, PasswordHash)
 	return this.supper
@@ -4368,48 +6779,169 @@ func (this *KORM_Where_KORM_test03User_D_SelectObj_PasswordHash) In(vList []stri
 	return this.supper
 }
 
+type KORM_Where_KORM_test03User_D_SelectObj_PasswordHash_Length struct {
+	supper      *KORM_test03User_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test03User_D_SelectObj_PasswordHash) Length() *KORM_Where_KORM_test03User_D_SelectObj_PasswordHash_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test03User_D_SelectObj_PasswordHash_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test03User_D_SelectObj_PasswordHash_Length) Equal(length int) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`PasswordHash`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_SelectObj_PasswordHash_Length) NotEqual(length int) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`PasswordHash`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_SelectObj_PasswordHash_Length) GreaterOrEqual(length int) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`PasswordHash`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_SelectObj_PasswordHash_Length) Less(length int) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`PasswordHash`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_SelectObj_PasswordHash_Length) LessOrEqual(length int) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`PasswordHash`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test03User_D_SelectObj_CreateTime struct {
-	supper *KORM_test03User_D_SelectObj
+	supper      *KORM_test03User_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03User_D_SelectObj) Where_CreateTime() *KORM_Where_KORM_test03User_D_SelectObj_CreateTime {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`CreateTime` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test03User_D_SelectObj_CreateTime{supper: this}
+	return &KORM_Where_KORM_test03User_D_SelectObj_CreateTime{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test03User_D_SelectObj_CreateTime) Equal(CreateTime time.Time) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_SelectObj_CreateTime) NotEqual(CreateTime time.Time) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_SelectObj_CreateTime) GreaterOrEqual(CreateTime time.Time) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_SelectObj_CreateTime) Less(CreateTime time.Time) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_SelectObj_CreateTime) LessOrEqual(CreateTime time.Time) *KORM_test03User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
@@ -4521,48 +7053,96 @@ func (this *KORM_test03User_D_UpdateObj) MustRun() (RowsAffected int64) {
 }
 
 type KORM_Where_KORM_test03User_D_UpdateObj_Id struct {
-	supper *KORM_test03User_D_UpdateObj
+	supper      *KORM_test03User_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03User_D_UpdateObj) Where_Id() *KORM_Where_KORM_test03User_D_UpdateObj_Id {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`Id` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test03User_D_UpdateObj_Id{supper: this}
+	return &KORM_Where_KORM_test03User_D_UpdateObj_Id{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test03User_D_UpdateObj_Id) Equal(Id string) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_UpdateObj_Id) NotEqual(Id string) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_UpdateObj_Id) Greater(Id string) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_UpdateObj_Id) GreaterOrEqual(Id string) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_UpdateObj_Id) Less(Id string) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_UpdateObj_Id) LessOrEqual(Id string) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
@@ -4584,49 +7164,179 @@ func (this *KORM_Where_KORM_test03User_D_UpdateObj_Id) In(vList []string) *KORM_
 	return this.supper
 }
 
+type KORM_Where_KORM_test03User_D_UpdateObj_Id_Length struct {
+	supper      *KORM_test03User_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test03User_D_UpdateObj_Id) Length() *KORM_Where_KORM_test03User_D_UpdateObj_Id_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test03User_D_UpdateObj_Id_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test03User_D_UpdateObj_Id_Length) Equal(length int) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_UpdateObj_Id_Length) NotEqual(length int) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_UpdateObj_Id_Length) GreaterOrEqual(length int) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Id`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_UpdateObj_Id_Length) Less(length int) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_UpdateObj_Id_Length) LessOrEqual(length int) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test03User_D_UpdateObj_Name struct {
-	supper *KORM_test03User_D_UpdateObj
+	supper      *KORM_test03User_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03User_D_UpdateObj) Where_Name() *KORM_Where_KORM_test03User_D_UpdateObj_Name {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`Name` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test03User_D_UpdateObj_Name{supper: this}
+	return &KORM_Where_KORM_test03User_D_UpdateObj_Name{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test03User_D_UpdateObj_Name) Equal(Name string) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_UpdateObj_Name) NotEqual(Name string) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_UpdateObj_Name) Greater(Name string) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_UpdateObj_Name) GreaterOrEqual(Name string) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_UpdateObj_Name) Less(Name string) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_UpdateObj_Name) LessOrEqual(Name string) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
@@ -4648,49 +7358,179 @@ func (this *KORM_Where_KORM_test03User_D_UpdateObj_Name) In(vList []string) *KOR
 	return this.supper
 }
 
+type KORM_Where_KORM_test03User_D_UpdateObj_Name_Length struct {
+	supper      *KORM_test03User_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test03User_D_UpdateObj_Name) Length() *KORM_Where_KORM_test03User_D_UpdateObj_Name_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test03User_D_UpdateObj_Name_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test03User_D_UpdateObj_Name_Length) Equal(length int) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_UpdateObj_Name_Length) NotEqual(length int) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_UpdateObj_Name_Length) GreaterOrEqual(length int) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_UpdateObj_Name_Length) Less(length int) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_UpdateObj_Name_Length) LessOrEqual(length int) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test03User_D_UpdateObj_PasswordHash struct {
-	supper *KORM_test03User_D_UpdateObj
+	supper      *KORM_test03User_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03User_D_UpdateObj) Where_PasswordHash() *KORM_Where_KORM_test03User_D_UpdateObj_PasswordHash {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`PasswordHash` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test03User_D_UpdateObj_PasswordHash{supper: this}
+	return &KORM_Where_KORM_test03User_D_UpdateObj_PasswordHash{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test03User_D_UpdateObj_PasswordHash) Equal(PasswordHash string) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`PasswordHash` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, PasswordHash)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_UpdateObj_PasswordHash) NotEqual(PasswordHash string) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`PasswordHash` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, PasswordHash)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_UpdateObj_PasswordHash) Greater(PasswordHash string) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`PasswordHash` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, PasswordHash)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_UpdateObj_PasswordHash) GreaterOrEqual(PasswordHash string) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`PasswordHash` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, PasswordHash)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_UpdateObj_PasswordHash) Less(PasswordHash string) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`PasswordHash` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, PasswordHash)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_UpdateObj_PasswordHash) LessOrEqual(PasswordHash string) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`PasswordHash` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, PasswordHash)
 	return this.supper
@@ -4712,48 +7552,169 @@ func (this *KORM_Where_KORM_test03User_D_UpdateObj_PasswordHash) In(vList []stri
 	return this.supper
 }
 
+type KORM_Where_KORM_test03User_D_UpdateObj_PasswordHash_Length struct {
+	supper      *KORM_test03User_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test03User_D_UpdateObj_PasswordHash) Length() *KORM_Where_KORM_test03User_D_UpdateObj_PasswordHash_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test03User_D_UpdateObj_PasswordHash_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test03User_D_UpdateObj_PasswordHash_Length) Equal(length int) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`PasswordHash`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_UpdateObj_PasswordHash_Length) NotEqual(length int) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`PasswordHash`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_UpdateObj_PasswordHash_Length) GreaterOrEqual(length int) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`PasswordHash`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_UpdateObj_PasswordHash_Length) Less(length int) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`PasswordHash`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_UpdateObj_PasswordHash_Length) LessOrEqual(length int) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`PasswordHash`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test03User_D_UpdateObj_CreateTime struct {
-	supper *KORM_test03User_D_UpdateObj
+	supper      *KORM_test03User_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03User_D_UpdateObj) Where_CreateTime() *KORM_Where_KORM_test03User_D_UpdateObj_CreateTime {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`CreateTime` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test03User_D_UpdateObj_CreateTime{supper: this}
+	return &KORM_Where_KORM_test03User_D_UpdateObj_CreateTime{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test03User_D_UpdateObj_CreateTime) Equal(CreateTime time.Time) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_UpdateObj_CreateTime) NotEqual(CreateTime time.Time) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_UpdateObj_CreateTime) GreaterOrEqual(CreateTime time.Time) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_UpdateObj_CreateTime) Less(CreateTime time.Time) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_UpdateObj_CreateTime) LessOrEqual(CreateTime time.Time) *KORM_test03User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
@@ -4824,48 +7785,96 @@ func (this *KORM_test03User_D_DeleteObj) MustRun() (RowsAffected int64) {
 }
 
 type KORM_Where_KORM_test03User_D_DeleteObj_Id struct {
-	supper *KORM_test03User_D_DeleteObj
+	supper      *KORM_test03User_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03User_D_DeleteObj) Where_Id() *KORM_Where_KORM_test03User_D_DeleteObj_Id {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`Id` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test03User_D_DeleteObj_Id{supper: this}
+	return &KORM_Where_KORM_test03User_D_DeleteObj_Id{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test03User_D_DeleteObj_Id) Equal(Id string) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_DeleteObj_Id) NotEqual(Id string) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_DeleteObj_Id) Greater(Id string) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_DeleteObj_Id) GreaterOrEqual(Id string) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_DeleteObj_Id) Less(Id string) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_DeleteObj_Id) LessOrEqual(Id string) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
@@ -4887,49 +7896,179 @@ func (this *KORM_Where_KORM_test03User_D_DeleteObj_Id) In(vList []string) *KORM_
 	return this.supper
 }
 
+type KORM_Where_KORM_test03User_D_DeleteObj_Id_Length struct {
+	supper      *KORM_test03User_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test03User_D_DeleteObj_Id) Length() *KORM_Where_KORM_test03User_D_DeleteObj_Id_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test03User_D_DeleteObj_Id_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test03User_D_DeleteObj_Id_Length) Equal(length int) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_DeleteObj_Id_Length) NotEqual(length int) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_DeleteObj_Id_Length) GreaterOrEqual(length int) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Id`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_DeleteObj_Id_Length) Less(length int) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_DeleteObj_Id_Length) LessOrEqual(length int) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test03User_D_DeleteObj_Name struct {
-	supper *KORM_test03User_D_DeleteObj
+	supper      *KORM_test03User_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03User_D_DeleteObj) Where_Name() *KORM_Where_KORM_test03User_D_DeleteObj_Name {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`Name` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test03User_D_DeleteObj_Name{supper: this}
+	return &KORM_Where_KORM_test03User_D_DeleteObj_Name{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test03User_D_DeleteObj_Name) Equal(Name string) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_DeleteObj_Name) NotEqual(Name string) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_DeleteObj_Name) Greater(Name string) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_DeleteObj_Name) GreaterOrEqual(Name string) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_DeleteObj_Name) Less(Name string) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_DeleteObj_Name) LessOrEqual(Name string) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
@@ -4951,49 +8090,179 @@ func (this *KORM_Where_KORM_test03User_D_DeleteObj_Name) In(vList []string) *KOR
 	return this.supper
 }
 
+type KORM_Where_KORM_test03User_D_DeleteObj_Name_Length struct {
+	supper      *KORM_test03User_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test03User_D_DeleteObj_Name) Length() *KORM_Where_KORM_test03User_D_DeleteObj_Name_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test03User_D_DeleteObj_Name_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test03User_D_DeleteObj_Name_Length) Equal(length int) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_DeleteObj_Name_Length) NotEqual(length int) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_DeleteObj_Name_Length) GreaterOrEqual(length int) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_DeleteObj_Name_Length) Less(length int) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_DeleteObj_Name_Length) LessOrEqual(length int) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test03User_D_DeleteObj_PasswordHash struct {
-	supper *KORM_test03User_D_DeleteObj
+	supper      *KORM_test03User_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03User_D_DeleteObj) Where_PasswordHash() *KORM_Where_KORM_test03User_D_DeleteObj_PasswordHash {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`PasswordHash` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test03User_D_DeleteObj_PasswordHash{supper: this}
+	return &KORM_Where_KORM_test03User_D_DeleteObj_PasswordHash{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test03User_D_DeleteObj_PasswordHash) Equal(PasswordHash string) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`PasswordHash` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, PasswordHash)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_DeleteObj_PasswordHash) NotEqual(PasswordHash string) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`PasswordHash` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, PasswordHash)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_DeleteObj_PasswordHash) Greater(PasswordHash string) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`PasswordHash` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, PasswordHash)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_DeleteObj_PasswordHash) GreaterOrEqual(PasswordHash string) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`PasswordHash` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, PasswordHash)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_DeleteObj_PasswordHash) Less(PasswordHash string) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`PasswordHash` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, PasswordHash)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_DeleteObj_PasswordHash) LessOrEqual(PasswordHash string) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`PasswordHash` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, PasswordHash)
 	return this.supper
@@ -5015,48 +8284,169 @@ func (this *KORM_Where_KORM_test03User_D_DeleteObj_PasswordHash) In(vList []stri
 	return this.supper
 }
 
+type KORM_Where_KORM_test03User_D_DeleteObj_PasswordHash_Length struct {
+	supper      *KORM_test03User_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test03User_D_DeleteObj_PasswordHash) Length() *KORM_Where_KORM_test03User_D_DeleteObj_PasswordHash_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test03User_D_DeleteObj_PasswordHash_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test03User_D_DeleteObj_PasswordHash_Length) Equal(length int) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`PasswordHash`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_DeleteObj_PasswordHash_Length) NotEqual(length int) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`PasswordHash`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_DeleteObj_PasswordHash_Length) GreaterOrEqual(length int) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`PasswordHash`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_DeleteObj_PasswordHash_Length) Less(length int) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`PasswordHash`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_DeleteObj_PasswordHash_Length) LessOrEqual(length int) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`PasswordHash`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test03User_D_DeleteObj_CreateTime struct {
-	supper *KORM_test03User_D_DeleteObj
+	supper      *KORM_test03User_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03User_D_DeleteObj) Where_CreateTime() *KORM_Where_KORM_test03User_D_DeleteObj_CreateTime {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`CreateTime` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test03User_D_DeleteObj_CreateTime{supper: this}
+	return &KORM_Where_KORM_test03User_D_DeleteObj_CreateTime{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test03User_D_DeleteObj_CreateTime) Equal(CreateTime time.Time) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_DeleteObj_CreateTime) NotEqual(CreateTime time.Time) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_DeleteObj_CreateTime) GreaterOrEqual(CreateTime time.Time) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_DeleteObj_CreateTime) Less(CreateTime time.Time) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_DeleteObj_CreateTime) LessOrEqual(CreateTime time.Time) *KORM_test03User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
@@ -5503,48 +8893,96 @@ func (this *KORM_test03Group_D_SelectObj) MustRun_ResultListWithTotalMatch() (li
 }
 
 type KORM_Where_KORM_test03Group_D_SelectObj_Id struct {
-	supper *KORM_test03Group_D_SelectObj
+	supper      *KORM_test03Group_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03Group_D_SelectObj) Where_Id() *KORM_Where_KORM_test03Group_D_SelectObj_Id {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`Id` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test03Group_D_SelectObj_Id{supper: this}
+	return &KORM_Where_KORM_test03Group_D_SelectObj_Id{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test03Group_D_SelectObj_Id) Equal(Id uint64) *KORM_test03Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_SelectObj_Id) NotEqual(Id uint64) *KORM_test03Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_SelectObj_Id) Greater(Id uint64) *KORM_test03Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_SelectObj_Id) GreaterOrEqual(Id uint64) *KORM_test03Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_SelectObj_Id) Less(Id uint64) *KORM_test03Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_SelectObj_Id) LessOrEqual(Id uint64) *KORM_test03Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
@@ -5567,48 +9005,96 @@ func (this *KORM_Where_KORM_test03Group_D_SelectObj_Id) In(vList []uint64) *KORM
 }
 
 type KORM_Where_KORM_test03Group_D_SelectObj_Name struct {
-	supper *KORM_test03Group_D_SelectObj
+	supper      *KORM_test03Group_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03Group_D_SelectObj) Where_Name() *KORM_Where_KORM_test03Group_D_SelectObj_Name {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`Name` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test03Group_D_SelectObj_Name{supper: this}
+	return &KORM_Where_KORM_test03Group_D_SelectObj_Name{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test03Group_D_SelectObj_Name) Equal(Name string) *KORM_test03Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_SelectObj_Name) NotEqual(Name string) *KORM_test03Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_SelectObj_Name) Greater(Name string) *KORM_test03Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_SelectObj_Name) GreaterOrEqual(Name string) *KORM_test03Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_SelectObj_Name) Less(Name string) *KORM_test03Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_SelectObj_Name) LessOrEqual(Name string) *KORM_test03Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
@@ -5630,48 +9116,169 @@ func (this *KORM_Where_KORM_test03Group_D_SelectObj_Name) In(vList []string) *KO
 	return this.supper
 }
 
+type KORM_Where_KORM_test03Group_D_SelectObj_Name_Length struct {
+	supper      *KORM_test03Group_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test03Group_D_SelectObj_Name) Length() *KORM_Where_KORM_test03Group_D_SelectObj_Name_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test03Group_D_SelectObj_Name_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test03Group_D_SelectObj_Name_Length) Equal(length int) *KORM_test03Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03Group_D_SelectObj_Name_Length) NotEqual(length int) *KORM_test03Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03Group_D_SelectObj_Name_Length) GreaterOrEqual(length int) *KORM_test03Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03Group_D_SelectObj_Name_Length) Less(length int) *KORM_test03Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03Group_D_SelectObj_Name_Length) LessOrEqual(length int) *KORM_test03Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test03Group_D_SelectObj_CreateTime struct {
-	supper *KORM_test03Group_D_SelectObj
+	supper      *KORM_test03Group_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03Group_D_SelectObj) Where_CreateTime() *KORM_Where_KORM_test03Group_D_SelectObj_CreateTime {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`CreateTime` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test03Group_D_SelectObj_CreateTime{supper: this}
+	return &KORM_Where_KORM_test03Group_D_SelectObj_CreateTime{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test03Group_D_SelectObj_CreateTime) Equal(CreateTime time.Time) *KORM_test03Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_SelectObj_CreateTime) NotEqual(CreateTime time.Time) *KORM_test03Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_SelectObj_CreateTime) GreaterOrEqual(CreateTime time.Time) *KORM_test03Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_SelectObj_CreateTime) Less(CreateTime time.Time) *KORM_test03Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_SelectObj_CreateTime) LessOrEqual(CreateTime time.Time) *KORM_test03Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
@@ -5773,48 +9380,96 @@ func (this *KORM_test03Group_D_UpdateObj) MustRun() (RowsAffected int64) {
 }
 
 type KORM_Where_KORM_test03Group_D_UpdateObj_Id struct {
-	supper *KORM_test03Group_D_UpdateObj
+	supper      *KORM_test03Group_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03Group_D_UpdateObj) Where_Id() *KORM_Where_KORM_test03Group_D_UpdateObj_Id {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`Id` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test03Group_D_UpdateObj_Id{supper: this}
+	return &KORM_Where_KORM_test03Group_D_UpdateObj_Id{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test03Group_D_UpdateObj_Id) Equal(Id uint64) *KORM_test03Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_UpdateObj_Id) NotEqual(Id uint64) *KORM_test03Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_UpdateObj_Id) Greater(Id uint64) *KORM_test03Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_UpdateObj_Id) GreaterOrEqual(Id uint64) *KORM_test03Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_UpdateObj_Id) Less(Id uint64) *KORM_test03Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_UpdateObj_Id) LessOrEqual(Id uint64) *KORM_test03Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
@@ -5837,48 +9492,96 @@ func (this *KORM_Where_KORM_test03Group_D_UpdateObj_Id) In(vList []uint64) *KORM
 }
 
 type KORM_Where_KORM_test03Group_D_UpdateObj_Name struct {
-	supper *KORM_test03Group_D_UpdateObj
+	supper      *KORM_test03Group_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03Group_D_UpdateObj) Where_Name() *KORM_Where_KORM_test03Group_D_UpdateObj_Name {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`Name` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test03Group_D_UpdateObj_Name{supper: this}
+	return &KORM_Where_KORM_test03Group_D_UpdateObj_Name{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test03Group_D_UpdateObj_Name) Equal(Name string) *KORM_test03Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_UpdateObj_Name) NotEqual(Name string) *KORM_test03Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_UpdateObj_Name) Greater(Name string) *KORM_test03Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_UpdateObj_Name) GreaterOrEqual(Name string) *KORM_test03Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_UpdateObj_Name) Less(Name string) *KORM_test03Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_UpdateObj_Name) LessOrEqual(Name string) *KORM_test03Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
@@ -5900,48 +9603,169 @@ func (this *KORM_Where_KORM_test03Group_D_UpdateObj_Name) In(vList []string) *KO
 	return this.supper
 }
 
+type KORM_Where_KORM_test03Group_D_UpdateObj_Name_Length struct {
+	supper      *KORM_test03Group_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test03Group_D_UpdateObj_Name) Length() *KORM_Where_KORM_test03Group_D_UpdateObj_Name_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test03Group_D_UpdateObj_Name_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test03Group_D_UpdateObj_Name_Length) Equal(length int) *KORM_test03Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03Group_D_UpdateObj_Name_Length) NotEqual(length int) *KORM_test03Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03Group_D_UpdateObj_Name_Length) GreaterOrEqual(length int) *KORM_test03Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03Group_D_UpdateObj_Name_Length) Less(length int) *KORM_test03Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03Group_D_UpdateObj_Name_Length) LessOrEqual(length int) *KORM_test03Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test03Group_D_UpdateObj_CreateTime struct {
-	supper *KORM_test03Group_D_UpdateObj
+	supper      *KORM_test03Group_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03Group_D_UpdateObj) Where_CreateTime() *KORM_Where_KORM_test03Group_D_UpdateObj_CreateTime {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`CreateTime` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test03Group_D_UpdateObj_CreateTime{supper: this}
+	return &KORM_Where_KORM_test03Group_D_UpdateObj_CreateTime{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test03Group_D_UpdateObj_CreateTime) Equal(CreateTime time.Time) *KORM_test03Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_UpdateObj_CreateTime) NotEqual(CreateTime time.Time) *KORM_test03Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_UpdateObj_CreateTime) GreaterOrEqual(CreateTime time.Time) *KORM_test03Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_UpdateObj_CreateTime) Less(CreateTime time.Time) *KORM_test03Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_UpdateObj_CreateTime) LessOrEqual(CreateTime time.Time) *KORM_test03Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
@@ -6012,48 +9836,96 @@ func (this *KORM_test03Group_D_DeleteObj) MustRun() (RowsAffected int64) {
 }
 
 type KORM_Where_KORM_test03Group_D_DeleteObj_Id struct {
-	supper *KORM_test03Group_D_DeleteObj
+	supper      *KORM_test03Group_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03Group_D_DeleteObj) Where_Id() *KORM_Where_KORM_test03Group_D_DeleteObj_Id {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`Id` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test03Group_D_DeleteObj_Id{supper: this}
+	return &KORM_Where_KORM_test03Group_D_DeleteObj_Id{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test03Group_D_DeleteObj_Id) Equal(Id uint64) *KORM_test03Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_DeleteObj_Id) NotEqual(Id uint64) *KORM_test03Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_DeleteObj_Id) Greater(Id uint64) *KORM_test03Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_DeleteObj_Id) GreaterOrEqual(Id uint64) *KORM_test03Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_DeleteObj_Id) Less(Id uint64) *KORM_test03Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_DeleteObj_Id) LessOrEqual(Id uint64) *KORM_test03Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
@@ -6076,48 +9948,96 @@ func (this *KORM_Where_KORM_test03Group_D_DeleteObj_Id) In(vList []uint64) *KORM
 }
 
 type KORM_Where_KORM_test03Group_D_DeleteObj_Name struct {
-	supper *KORM_test03Group_D_DeleteObj
+	supper      *KORM_test03Group_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03Group_D_DeleteObj) Where_Name() *KORM_Where_KORM_test03Group_D_DeleteObj_Name {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`Name` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test03Group_D_DeleteObj_Name{supper: this}
+	return &KORM_Where_KORM_test03Group_D_DeleteObj_Name{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test03Group_D_DeleteObj_Name) Equal(Name string) *KORM_test03Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_DeleteObj_Name) NotEqual(Name string) *KORM_test03Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_DeleteObj_Name) Greater(Name string) *KORM_test03Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_DeleteObj_Name) GreaterOrEqual(Name string) *KORM_test03Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_DeleteObj_Name) Less(Name string) *KORM_test03Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_DeleteObj_Name) LessOrEqual(Name string) *KORM_test03Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
@@ -6139,48 +10059,169 @@ func (this *KORM_Where_KORM_test03Group_D_DeleteObj_Name) In(vList []string) *KO
 	return this.supper
 }
 
+type KORM_Where_KORM_test03Group_D_DeleteObj_Name_Length struct {
+	supper      *KORM_test03Group_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test03Group_D_DeleteObj_Name) Length() *KORM_Where_KORM_test03Group_D_DeleteObj_Name_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test03Group_D_DeleteObj_Name_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test03Group_D_DeleteObj_Name_Length) Equal(length int) *KORM_test03Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03Group_D_DeleteObj_Name_Length) NotEqual(length int) *KORM_test03Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03Group_D_DeleteObj_Name_Length) GreaterOrEqual(length int) *KORM_test03Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03Group_D_DeleteObj_Name_Length) Less(length int) *KORM_test03Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03Group_D_DeleteObj_Name_Length) LessOrEqual(length int) *KORM_test03Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test03Group_D_DeleteObj_CreateTime struct {
-	supper *KORM_test03Group_D_DeleteObj
+	supper      *KORM_test03Group_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03Group_D_DeleteObj) Where_CreateTime() *KORM_Where_KORM_test03Group_D_DeleteObj_CreateTime {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`CreateTime` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test03Group_D_DeleteObj_CreateTime{supper: this}
+	return &KORM_Where_KORM_test03Group_D_DeleteObj_CreateTime{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test03Group_D_DeleteObj_CreateTime) Equal(CreateTime time.Time) *KORM_test03Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_DeleteObj_CreateTime) NotEqual(CreateTime time.Time) *KORM_test03Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_DeleteObj_CreateTime) GreaterOrEqual(CreateTime time.Time) *KORM_test03Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_DeleteObj_CreateTime) Less(CreateTime time.Time) *KORM_test03Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_DeleteObj_CreateTime) LessOrEqual(CreateTime time.Time) *KORM_test03Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
@@ -6642,48 +10683,96 @@ type KORM_test03User_D_BeLeftJoin struct {
 	orderByP     *[]string
 }
 type KORM_Where_KORM_test03User_D_BeLeftJoin_Id struct {
-	supper *KORM_test03User_D_BeLeftJoin
+	supper      *KORM_test03User_D_BeLeftJoin
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03User_D_BeLeftJoin) Where_Id() *KORM_Where_KORM_test03User_D_BeLeftJoin_Id {
-	if this.bufWhere.Len() > 0 {
-		if (*this.isLinkBeginP) == false {
-			this.bufWhere.WriteString((*this.linkOpListP)[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`Id` ")
-
+	isLinkBeginValue := (*this.isLinkBeginP)
 	(*this.isLinkBeginP) = false
-	return &KORM_Where_KORM_test03User_D_BeLeftJoin_Id{supper: this}
+	return &KORM_Where_KORM_test03User_D_BeLeftJoin_Id{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: (*this.linkOpListP)}
 }
 func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_Id) Equal(Id string) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_Id) NotEqual(Id string) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_Id) Greater(Id string) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_Id) GreaterOrEqual(Id string) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_Id) Less(Id string) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_Id) LessOrEqual(Id string) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Id)
 	return this.supper
@@ -6705,49 +10794,179 @@ func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_Id) In(vList []string) *KORM
 	return this.supper
 }
 
+type KORM_Where_KORM_test03User_D_BeLeftJoin_Id_Length struct {
+	supper      *KORM_test03User_D_BeLeftJoin
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_Id) Length() *KORM_Where_KORM_test03User_D_BeLeftJoin_Id_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test03User_D_BeLeftJoin_Id_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_Id_Length) Equal(length int) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_Id_Length) NotEqual(length int) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_Id_Length) GreaterOrEqual(length int) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_Id_Length) Less(length int) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_Id_Length) LessOrEqual(length int) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test03User_D_BeLeftJoin_Name struct {
-	supper *KORM_test03User_D_BeLeftJoin
+	supper      *KORM_test03User_D_BeLeftJoin
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03User_D_BeLeftJoin) Where_Name() *KORM_Where_KORM_test03User_D_BeLeftJoin_Name {
-	if this.bufWhere.Len() > 0 {
-		if (*this.isLinkBeginP) == false {
-			this.bufWhere.WriteString((*this.linkOpListP)[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`Name` ")
-
+	isLinkBeginValue := (*this.isLinkBeginP)
 	(*this.isLinkBeginP) = false
-	return &KORM_Where_KORM_test03User_D_BeLeftJoin_Name{supper: this}
+	return &KORM_Where_KORM_test03User_D_BeLeftJoin_Name{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: (*this.linkOpListP)}
 }
 func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_Name) Equal(Name string) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_Name) NotEqual(Name string) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_Name) Greater(Name string) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_Name) GreaterOrEqual(Name string) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_Name) Less(Name string) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_Name) LessOrEqual(Name string) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Name)
 	return this.supper
@@ -6769,49 +10988,179 @@ func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_Name) In(vList []string) *KO
 	return this.supper
 }
 
+type KORM_Where_KORM_test03User_D_BeLeftJoin_Name_Length struct {
+	supper      *KORM_test03User_D_BeLeftJoin
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_Name) Length() *KORM_Where_KORM_test03User_D_BeLeftJoin_Name_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test03User_D_BeLeftJoin_Name_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_Name_Length) Equal(length int) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_Name_Length) NotEqual(length int) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_Name_Length) GreaterOrEqual(length int) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_Name_Length) Less(length int) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_Name_Length) LessOrEqual(length int) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test03User_D_BeLeftJoin_PasswordHash struct {
-	supper *KORM_test03User_D_BeLeftJoin
+	supper      *KORM_test03User_D_BeLeftJoin
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03User_D_BeLeftJoin) Where_PasswordHash() *KORM_Where_KORM_test03User_D_BeLeftJoin_PasswordHash {
-	if this.bufWhere.Len() > 0 {
-		if (*this.isLinkBeginP) == false {
-			this.bufWhere.WriteString((*this.linkOpListP)[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`PasswordHash` ")
-
+	isLinkBeginValue := (*this.isLinkBeginP)
 	(*this.isLinkBeginP) = false
-	return &KORM_Where_KORM_test03User_D_BeLeftJoin_PasswordHash{supper: this}
+	return &KORM_Where_KORM_test03User_D_BeLeftJoin_PasswordHash{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: (*this.linkOpListP)}
 }
 func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_PasswordHash) Equal(PasswordHash string) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`PasswordHash` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), PasswordHash)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_PasswordHash) NotEqual(PasswordHash string) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`PasswordHash` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), PasswordHash)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_PasswordHash) Greater(PasswordHash string) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`PasswordHash` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), PasswordHash)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_PasswordHash) GreaterOrEqual(PasswordHash string) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`PasswordHash` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), PasswordHash)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_PasswordHash) Less(PasswordHash string) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`PasswordHash` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), PasswordHash)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_PasswordHash) LessOrEqual(PasswordHash string) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`PasswordHash` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), PasswordHash)
 	return this.supper
@@ -6833,48 +11182,169 @@ func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_PasswordHash) In(vList []str
 	return this.supper
 }
 
+type KORM_Where_KORM_test03User_D_BeLeftJoin_PasswordHash_Length struct {
+	supper      *KORM_test03User_D_BeLeftJoin
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_PasswordHash) Length() *KORM_Where_KORM_test03User_D_BeLeftJoin_PasswordHash_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test03User_D_BeLeftJoin_PasswordHash_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_PasswordHash_Length) Equal(length int) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`PasswordHash`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_PasswordHash_Length) NotEqual(length int) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`PasswordHash`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_PasswordHash_Length) GreaterOrEqual(length int) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`PasswordHash`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_PasswordHash_Length) Less(length int) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`PasswordHash`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_PasswordHash_Length) LessOrEqual(length int) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`PasswordHash`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test03User_D_BeLeftJoin_CreateTime struct {
-	supper *KORM_test03User_D_BeLeftJoin
+	supper      *KORM_test03User_D_BeLeftJoin
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03User_D_BeLeftJoin) Where_CreateTime() *KORM_Where_KORM_test03User_D_BeLeftJoin_CreateTime {
-	if this.bufWhere.Len() > 0 {
-		if (*this.isLinkBeginP) == false {
-			this.bufWhere.WriteString((*this.linkOpListP)[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`CreateTime` ")
-
+	isLinkBeginValue := (*this.isLinkBeginP)
 	(*this.isLinkBeginP) = false
-	return &KORM_Where_KORM_test03User_D_BeLeftJoin_CreateTime{supper: this}
+	return &KORM_Where_KORM_test03User_D_BeLeftJoin_CreateTime{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: (*this.linkOpListP)}
 }
 func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_CreateTime) Equal(CreateTime time.Time) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_CreateTime) NotEqual(CreateTime time.Time) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("!=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_CreateTime) GreaterOrEqual(CreateTime time.Time) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString(">=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_CreateTime) Less(CreateTime time.Time) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("<? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03User_D_BeLeftJoin_CreateTime) LessOrEqual(CreateTime time.Time) *KORM_test03User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("<=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), vCreateTime)
@@ -6978,48 +11448,96 @@ type KORM_test03Group_D_BeLeftJoin struct {
 	orderByP     *[]string
 }
 type KORM_Where_KORM_test03Group_D_BeLeftJoin_Id struct {
-	supper *KORM_test03Group_D_BeLeftJoin
+	supper      *KORM_test03Group_D_BeLeftJoin
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03Group_D_BeLeftJoin) Where_Id() *KORM_Where_KORM_test03Group_D_BeLeftJoin_Id {
-	if this.bufWhere.Len() > 0 {
-		if (*this.isLinkBeginP) == false {
-			this.bufWhere.WriteString((*this.linkOpListP)[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`Id` ")
-
+	isLinkBeginValue := (*this.isLinkBeginP)
 	(*this.isLinkBeginP) = false
-	return &KORM_Where_KORM_test03Group_D_BeLeftJoin_Id{supper: this}
+	return &KORM_Where_KORM_test03Group_D_BeLeftJoin_Id{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: (*this.linkOpListP)}
 }
 func (this *KORM_Where_KORM_test03Group_D_BeLeftJoin_Id) Equal(Id uint64) *KORM_test03Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_BeLeftJoin_Id) NotEqual(Id uint64) *KORM_test03Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_BeLeftJoin_Id) Greater(Id uint64) *KORM_test03Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_BeLeftJoin_Id) GreaterOrEqual(Id uint64) *KORM_test03Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_BeLeftJoin_Id) Less(Id uint64) *KORM_test03Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_BeLeftJoin_Id) LessOrEqual(Id uint64) *KORM_test03Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Id)
 	return this.supper
@@ -7042,48 +11560,96 @@ func (this *KORM_Where_KORM_test03Group_D_BeLeftJoin_Id) In(vList []uint64) *KOR
 }
 
 type KORM_Where_KORM_test03Group_D_BeLeftJoin_Name struct {
-	supper *KORM_test03Group_D_BeLeftJoin
+	supper      *KORM_test03Group_D_BeLeftJoin
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03Group_D_BeLeftJoin) Where_Name() *KORM_Where_KORM_test03Group_D_BeLeftJoin_Name {
-	if this.bufWhere.Len() > 0 {
-		if (*this.isLinkBeginP) == false {
-			this.bufWhere.WriteString((*this.linkOpListP)[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`Name` ")
-
+	isLinkBeginValue := (*this.isLinkBeginP)
 	(*this.isLinkBeginP) = false
-	return &KORM_Where_KORM_test03Group_D_BeLeftJoin_Name{supper: this}
+	return &KORM_Where_KORM_test03Group_D_BeLeftJoin_Name{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: (*this.linkOpListP)}
 }
 func (this *KORM_Where_KORM_test03Group_D_BeLeftJoin_Name) Equal(Name string) *KORM_test03Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_BeLeftJoin_Name) NotEqual(Name string) *KORM_test03Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_BeLeftJoin_Name) Greater(Name string) *KORM_test03Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_BeLeftJoin_Name) GreaterOrEqual(Name string) *KORM_test03Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_BeLeftJoin_Name) Less(Name string) *KORM_test03Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_BeLeftJoin_Name) LessOrEqual(Name string) *KORM_test03Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Name)
 	return this.supper
@@ -7105,48 +11671,169 @@ func (this *KORM_Where_KORM_test03Group_D_BeLeftJoin_Name) In(vList []string) *K
 	return this.supper
 }
 
+type KORM_Where_KORM_test03Group_D_BeLeftJoin_Name_Length struct {
+	supper      *KORM_test03Group_D_BeLeftJoin
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test03Group_D_BeLeftJoin_Name) Length() *KORM_Where_KORM_test03Group_D_BeLeftJoin_Name_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test03Group_D_BeLeftJoin_Name_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test03Group_D_BeLeftJoin_Name_Length) Equal(length int) *KORM_test03Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03Group_D_BeLeftJoin_Name_Length) NotEqual(length int) *KORM_test03Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03Group_D_BeLeftJoin_Name_Length) GreaterOrEqual(length int) *KORM_test03Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03Group_D_BeLeftJoin_Name_Length) Less(length int) *KORM_test03Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03Group_D_BeLeftJoin_Name_Length) LessOrEqual(length int) *KORM_test03Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test03Group_D_BeLeftJoin_CreateTime struct {
-	supper *KORM_test03Group_D_BeLeftJoin
+	supper      *KORM_test03Group_D_BeLeftJoin
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03Group_D_BeLeftJoin) Where_CreateTime() *KORM_Where_KORM_test03Group_D_BeLeftJoin_CreateTime {
-	if this.bufWhere.Len() > 0 {
-		if (*this.isLinkBeginP) == false {
-			this.bufWhere.WriteString((*this.linkOpListP)[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`CreateTime` ")
-
+	isLinkBeginValue := (*this.isLinkBeginP)
 	(*this.isLinkBeginP) = false
-	return &KORM_Where_KORM_test03Group_D_BeLeftJoin_CreateTime{supper: this}
+	return &KORM_Where_KORM_test03Group_D_BeLeftJoin_CreateTime{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: (*this.linkOpListP)}
 }
 func (this *KORM_Where_KORM_test03Group_D_BeLeftJoin_CreateTime) Equal(CreateTime time.Time) *KORM_test03Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_BeLeftJoin_CreateTime) NotEqual(CreateTime time.Time) *KORM_test03Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("!=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_BeLeftJoin_CreateTime) GreaterOrEqual(CreateTime time.Time) *KORM_test03Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString(">=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_BeLeftJoin_CreateTime) Less(CreateTime time.Time) *KORM_test03Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("<? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03Group_D_BeLeftJoin_CreateTime) LessOrEqual(CreateTime time.Time) *KORM_test03Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("<=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), vCreateTime)
@@ -7217,48 +11904,96 @@ func (this *KORM_test03Group_D_BeLeftJoin) OrderBy_CreateTime() *KORM_test03Grou
 }
 
 type KORM_Where_KORM_test03UserInGroup_D_SelectObj_UserId struct {
-	supper *KORM_test03UserInGroup_D_SelectObj
+	supper      *KORM_test03UserInGroup_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03UserInGroup_D_SelectObj) Where_UserId() *KORM_Where_KORM_test03UserInGroup_D_SelectObj_UserId {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`UserId` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test03UserInGroup_D_SelectObj_UserId{supper: this}
+	return &KORM_Where_KORM_test03UserInGroup_D_SelectObj_UserId{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_SelectObj_UserId) Equal(UserId string) *KORM_test03UserInGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`UserId` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_SelectObj_UserId) NotEqual(UserId string) *KORM_test03UserInGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`UserId` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_SelectObj_UserId) Greater(UserId string) *KORM_test03UserInGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`UserId` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_SelectObj_UserId) GreaterOrEqual(UserId string) *KORM_test03UserInGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`UserId` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_SelectObj_UserId) Less(UserId string) *KORM_test03UserInGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`UserId` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_SelectObj_UserId) LessOrEqual(UserId string) *KORM_test03UserInGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`UserId` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
@@ -7280,49 +12015,179 @@ func (this *KORM_Where_KORM_test03UserInGroup_D_SelectObj_UserId) In(vList []str
 	return this.supper
 }
 
+type KORM_Where_KORM_test03UserInGroup_D_SelectObj_UserId_Length struct {
+	supper      *KORM_test03UserInGroup_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test03UserInGroup_D_SelectObj_UserId) Length() *KORM_Where_KORM_test03UserInGroup_D_SelectObj_UserId_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test03UserInGroup_D_SelectObj_UserId_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test03UserInGroup_D_SelectObj_UserId_Length) Equal(length int) *KORM_test03UserInGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03UserInGroup_D_SelectObj_UserId_Length) NotEqual(length int) *KORM_test03UserInGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03UserInGroup_D_SelectObj_UserId_Length) GreaterOrEqual(length int) *KORM_test03UserInGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03UserInGroup_D_SelectObj_UserId_Length) Less(length int) *KORM_test03UserInGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03UserInGroup_D_SelectObj_UserId_Length) LessOrEqual(length int) *KORM_test03UserInGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test03UserInGroup_D_SelectObj_GroupId struct {
-	supper *KORM_test03UserInGroup_D_SelectObj
+	supper      *KORM_test03UserInGroup_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03UserInGroup_D_SelectObj) Where_GroupId() *KORM_Where_KORM_test03UserInGroup_D_SelectObj_GroupId {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`GroupId` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test03UserInGroup_D_SelectObj_GroupId{supper: this}
+	return &KORM_Where_KORM_test03UserInGroup_D_SelectObj_GroupId{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_SelectObj_GroupId) Equal(GroupId uint64) *KORM_test03UserInGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`GroupId` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_SelectObj_GroupId) NotEqual(GroupId uint64) *KORM_test03UserInGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`GroupId` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_SelectObj_GroupId) Greater(GroupId uint64) *KORM_test03UserInGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`GroupId` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_SelectObj_GroupId) GreaterOrEqual(GroupId uint64) *KORM_test03UserInGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`GroupId` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_SelectObj_GroupId) Less(GroupId uint64) *KORM_test03UserInGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`GroupId` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_SelectObj_GroupId) LessOrEqual(GroupId uint64) *KORM_test03UserInGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`GroupId` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
@@ -7429,48 +12294,96 @@ func (this *KORM_test03UserInGroup_D_UpdateObj) MustRun() (RowsAffected int64) {
 }
 
 type KORM_Where_KORM_test03UserInGroup_D_UpdateObj_UserId struct {
-	supper *KORM_test03UserInGroup_D_UpdateObj
+	supper      *KORM_test03UserInGroup_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03UserInGroup_D_UpdateObj) Where_UserId() *KORM_Where_KORM_test03UserInGroup_D_UpdateObj_UserId {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`UserId` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test03UserInGroup_D_UpdateObj_UserId{supper: this}
+	return &KORM_Where_KORM_test03UserInGroup_D_UpdateObj_UserId{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_UpdateObj_UserId) Equal(UserId string) *KORM_test03UserInGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_UpdateObj_UserId) NotEqual(UserId string) *KORM_test03UserInGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_UpdateObj_UserId) Greater(UserId string) *KORM_test03UserInGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_UpdateObj_UserId) GreaterOrEqual(UserId string) *KORM_test03UserInGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_UpdateObj_UserId) Less(UserId string) *KORM_test03UserInGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_UpdateObj_UserId) LessOrEqual(UserId string) *KORM_test03UserInGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
@@ -7492,49 +12405,179 @@ func (this *KORM_Where_KORM_test03UserInGroup_D_UpdateObj_UserId) In(vList []str
 	return this.supper
 }
 
+type KORM_Where_KORM_test03UserInGroup_D_UpdateObj_UserId_Length struct {
+	supper      *KORM_test03UserInGroup_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test03UserInGroup_D_UpdateObj_UserId) Length() *KORM_Where_KORM_test03UserInGroup_D_UpdateObj_UserId_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test03UserInGroup_D_UpdateObj_UserId_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test03UserInGroup_D_UpdateObj_UserId_Length) Equal(length int) *KORM_test03UserInGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03UserInGroup_D_UpdateObj_UserId_Length) NotEqual(length int) *KORM_test03UserInGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03UserInGroup_D_UpdateObj_UserId_Length) GreaterOrEqual(length int) *KORM_test03UserInGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03UserInGroup_D_UpdateObj_UserId_Length) Less(length int) *KORM_test03UserInGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03UserInGroup_D_UpdateObj_UserId_Length) LessOrEqual(length int) *KORM_test03UserInGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test03UserInGroup_D_UpdateObj_GroupId struct {
-	supper *KORM_test03UserInGroup_D_UpdateObj
+	supper      *KORM_test03UserInGroup_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03UserInGroup_D_UpdateObj) Where_GroupId() *KORM_Where_KORM_test03UserInGroup_D_UpdateObj_GroupId {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`GroupId` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test03UserInGroup_D_UpdateObj_GroupId{supper: this}
+	return &KORM_Where_KORM_test03UserInGroup_D_UpdateObj_GroupId{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_UpdateObj_GroupId) Equal(GroupId uint64) *KORM_test03UserInGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_UpdateObj_GroupId) NotEqual(GroupId uint64) *KORM_test03UserInGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_UpdateObj_GroupId) Greater(GroupId uint64) *KORM_test03UserInGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_UpdateObj_GroupId) GreaterOrEqual(GroupId uint64) *KORM_test03UserInGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_UpdateObj_GroupId) Less(GroupId uint64) *KORM_test03UserInGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_UpdateObj_GroupId) LessOrEqual(GroupId uint64) *KORM_test03UserInGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
@@ -7620,48 +12663,96 @@ func (this *KORM_test03UserInGroup_D_DeleteObj) MustRun() (RowsAffected int64) {
 }
 
 type KORM_Where_KORM_test03UserInGroup_D_DeleteObj_UserId struct {
-	supper *KORM_test03UserInGroup_D_DeleteObj
+	supper      *KORM_test03UserInGroup_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03UserInGroup_D_DeleteObj) Where_UserId() *KORM_Where_KORM_test03UserInGroup_D_DeleteObj_UserId {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`UserId` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test03UserInGroup_D_DeleteObj_UserId{supper: this}
+	return &KORM_Where_KORM_test03UserInGroup_D_DeleteObj_UserId{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_DeleteObj_UserId) Equal(UserId string) *KORM_test03UserInGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_DeleteObj_UserId) NotEqual(UserId string) *KORM_test03UserInGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_DeleteObj_UserId) Greater(UserId string) *KORM_test03UserInGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_DeleteObj_UserId) GreaterOrEqual(UserId string) *KORM_test03UserInGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_DeleteObj_UserId) Less(UserId string) *KORM_test03UserInGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_DeleteObj_UserId) LessOrEqual(UserId string) *KORM_test03UserInGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
@@ -7683,49 +12774,179 @@ func (this *KORM_Where_KORM_test03UserInGroup_D_DeleteObj_UserId) In(vList []str
 	return this.supper
 }
 
+type KORM_Where_KORM_test03UserInGroup_D_DeleteObj_UserId_Length struct {
+	supper      *KORM_test03UserInGroup_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test03UserInGroup_D_DeleteObj_UserId) Length() *KORM_Where_KORM_test03UserInGroup_D_DeleteObj_UserId_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test03UserInGroup_D_DeleteObj_UserId_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test03UserInGroup_D_DeleteObj_UserId_Length) Equal(length int) *KORM_test03UserInGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03UserInGroup_D_DeleteObj_UserId_Length) NotEqual(length int) *KORM_test03UserInGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03UserInGroup_D_DeleteObj_UserId_Length) GreaterOrEqual(length int) *KORM_test03UserInGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03UserInGroup_D_DeleteObj_UserId_Length) Less(length int) *KORM_test03UserInGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test03UserInGroup_D_DeleteObj_UserId_Length) LessOrEqual(length int) *KORM_test03UserInGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test03UserInGroup_D_DeleteObj_GroupId struct {
-	supper *KORM_test03UserInGroup_D_DeleteObj
+	supper      *KORM_test03UserInGroup_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test03UserInGroup_D_DeleteObj) Where_GroupId() *KORM_Where_KORM_test03UserInGroup_D_DeleteObj_GroupId {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`GroupId` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test03UserInGroup_D_DeleteObj_GroupId{supper: this}
+	return &KORM_Where_KORM_test03UserInGroup_D_DeleteObj_GroupId{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_DeleteObj_GroupId) Equal(GroupId uint64) *KORM_test03UserInGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_DeleteObj_GroupId) NotEqual(GroupId uint64) *KORM_test03UserInGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_DeleteObj_GroupId) Greater(GroupId uint64) *KORM_test03UserInGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_DeleteObj_GroupId) GreaterOrEqual(GroupId uint64) *KORM_test03UserInGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_DeleteObj_GroupId) Less(GroupId uint64) *KORM_test03UserInGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test03UserInGroup_D_DeleteObj_GroupId) LessOrEqual(GroupId uint64) *KORM_test03UserInGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
@@ -8192,48 +13413,96 @@ func (this *KORM_test04User_D_SelectObj) MustRun_ResultListWithTotalMatch() (lis
 }
 
 type KORM_Where_KORM_test04User_D_SelectObj_Id struct {
-	supper *KORM_test04User_D_SelectObj
+	supper      *KORM_test04User_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test04User_D_SelectObj) Where_Id() *KORM_Where_KORM_test04User_D_SelectObj_Id {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`Id` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test04User_D_SelectObj_Id{supper: this}
+	return &KORM_Where_KORM_test04User_D_SelectObj_Id{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test04User_D_SelectObj_Id) Equal(Id int) *KORM_test04User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_SelectObj_Id) NotEqual(Id int) *KORM_test04User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_SelectObj_Id) Greater(Id int) *KORM_test04User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_SelectObj_Id) GreaterOrEqual(Id int) *KORM_test04User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_SelectObj_Id) Less(Id int) *KORM_test04User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_SelectObj_Id) LessOrEqual(Id int) *KORM_test04User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
@@ -8256,48 +13525,96 @@ func (this *KORM_Where_KORM_test04User_D_SelectObj_Id) In(vList []int) *KORM_tes
 }
 
 type KORM_Where_KORM_test04User_D_SelectObj_Name struct {
-	supper *KORM_test04User_D_SelectObj
+	supper      *KORM_test04User_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test04User_D_SelectObj) Where_Name() *KORM_Where_KORM_test04User_D_SelectObj_Name {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`Name` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test04User_D_SelectObj_Name{supper: this}
+	return &KORM_Where_KORM_test04User_D_SelectObj_Name{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test04User_D_SelectObj_Name) Equal(Name string) *KORM_test04User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_SelectObj_Name) NotEqual(Name string) *KORM_test04User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_SelectObj_Name) Greater(Name string) *KORM_test04User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_SelectObj_Name) GreaterOrEqual(Name string) *KORM_test04User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_SelectObj_Name) Less(Name string) *KORM_test04User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_SelectObj_Name) LessOrEqual(Name string) *KORM_test04User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
@@ -8319,49 +13636,179 @@ func (this *KORM_Where_KORM_test04User_D_SelectObj_Name) In(vList []string) *KOR
 	return this.supper
 }
 
+type KORM_Where_KORM_test04User_D_SelectObj_Name_Length struct {
+	supper      *KORM_test04User_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test04User_D_SelectObj_Name) Length() *KORM_Where_KORM_test04User_D_SelectObj_Name_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test04User_D_SelectObj_Name_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test04User_D_SelectObj_Name_Length) Equal(length int) *KORM_test04User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test04User_D_SelectObj_Name_Length) NotEqual(length int) *KORM_test04User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test04User_D_SelectObj_Name_Length) GreaterOrEqual(length int) *KORM_test04User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test04User_D_SelectObj_Name_Length) Less(length int) *KORM_test04User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test04User_D_SelectObj_Name_Length) LessOrEqual(length int) *KORM_test04User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test04User_D_SelectObj_Key struct {
-	supper *KORM_test04User_D_SelectObj
+	supper      *KORM_test04User_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test04User_D_SelectObj) Where_Key() *KORM_Where_KORM_test04User_D_SelectObj_Key {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`Key` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test04User_D_SelectObj_Key{supper: this}
+	return &KORM_Where_KORM_test04User_D_SelectObj_Key{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test04User_D_SelectObj_Key) Equal(Key string) *KORM_test04User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Key` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Key)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_SelectObj_Key) NotEqual(Key string) *KORM_test04User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Key` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Key)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_SelectObj_Key) Greater(Key string) *KORM_test04User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Key` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Key)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_SelectObj_Key) GreaterOrEqual(Key string) *KORM_test04User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Key` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Key)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_SelectObj_Key) Less(Key string) *KORM_test04User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Key` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Key)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_SelectObj_Key) LessOrEqual(Key string) *KORM_test04User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Key` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Key)
 	return this.supper
@@ -8380,6 +13827,88 @@ func (this *KORM_Where_KORM_test04User_D_SelectObj_Key) In(vList []string) *KORM
 		this.supper.argsWhere = append(this.supper.argsWhere, v)
 	}
 	this.supper.bufWhere.WriteString(") ")
+	return this.supper
+}
+
+type KORM_Where_KORM_test04User_D_SelectObj_Key_Length struct {
+	supper      *KORM_test04User_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test04User_D_SelectObj_Key) Length() *KORM_Where_KORM_test04User_D_SelectObj_Key_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test04User_D_SelectObj_Key_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test04User_D_SelectObj_Key_Length) Equal(length int) *KORM_test04User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Key`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test04User_D_SelectObj_Key_Length) NotEqual(length int) *KORM_test04User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Key`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test04User_D_SelectObj_Key_Length) GreaterOrEqual(length int) *KORM_test04User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Key`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test04User_D_SelectObj_Key_Length) Less(length int) *KORM_test04User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Key`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test04User_D_SelectObj_Key_Length) LessOrEqual(length int) *KORM_test04User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Key`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
 	return this.supper
 }
 func (this *KORM_test04User_D_SelectObj) CondMultOpBegin_AND() *KORM_test04User_D_SelectObj {
@@ -8478,48 +14007,96 @@ func (this *KORM_test04User_D_UpdateObj) MustRun() (RowsAffected int64) {
 }
 
 type KORM_Where_KORM_test04User_D_UpdateObj_Id struct {
-	supper *KORM_test04User_D_UpdateObj
+	supper      *KORM_test04User_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test04User_D_UpdateObj) Where_Id() *KORM_Where_KORM_test04User_D_UpdateObj_Id {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`Id` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test04User_D_UpdateObj_Id{supper: this}
+	return &KORM_Where_KORM_test04User_D_UpdateObj_Id{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test04User_D_UpdateObj_Id) Equal(Id int) *KORM_test04User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_UpdateObj_Id) NotEqual(Id int) *KORM_test04User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_UpdateObj_Id) Greater(Id int) *KORM_test04User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_UpdateObj_Id) GreaterOrEqual(Id int) *KORM_test04User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_UpdateObj_Id) Less(Id int) *KORM_test04User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_UpdateObj_Id) LessOrEqual(Id int) *KORM_test04User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
@@ -8542,48 +14119,96 @@ func (this *KORM_Where_KORM_test04User_D_UpdateObj_Id) In(vList []int) *KORM_tes
 }
 
 type KORM_Where_KORM_test04User_D_UpdateObj_Name struct {
-	supper *KORM_test04User_D_UpdateObj
+	supper      *KORM_test04User_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test04User_D_UpdateObj) Where_Name() *KORM_Where_KORM_test04User_D_UpdateObj_Name {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`Name` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test04User_D_UpdateObj_Name{supper: this}
+	return &KORM_Where_KORM_test04User_D_UpdateObj_Name{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test04User_D_UpdateObj_Name) Equal(Name string) *KORM_test04User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_UpdateObj_Name) NotEqual(Name string) *KORM_test04User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_UpdateObj_Name) Greater(Name string) *KORM_test04User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_UpdateObj_Name) GreaterOrEqual(Name string) *KORM_test04User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_UpdateObj_Name) Less(Name string) *KORM_test04User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_UpdateObj_Name) LessOrEqual(Name string) *KORM_test04User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
@@ -8605,49 +14230,179 @@ func (this *KORM_Where_KORM_test04User_D_UpdateObj_Name) In(vList []string) *KOR
 	return this.supper
 }
 
+type KORM_Where_KORM_test04User_D_UpdateObj_Name_Length struct {
+	supper      *KORM_test04User_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test04User_D_UpdateObj_Name) Length() *KORM_Where_KORM_test04User_D_UpdateObj_Name_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test04User_D_UpdateObj_Name_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test04User_D_UpdateObj_Name_Length) Equal(length int) *KORM_test04User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test04User_D_UpdateObj_Name_Length) NotEqual(length int) *KORM_test04User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test04User_D_UpdateObj_Name_Length) GreaterOrEqual(length int) *KORM_test04User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test04User_D_UpdateObj_Name_Length) Less(length int) *KORM_test04User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test04User_D_UpdateObj_Name_Length) LessOrEqual(length int) *KORM_test04User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test04User_D_UpdateObj_Key struct {
-	supper *KORM_test04User_D_UpdateObj
+	supper      *KORM_test04User_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test04User_D_UpdateObj) Where_Key() *KORM_Where_KORM_test04User_D_UpdateObj_Key {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`Key` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test04User_D_UpdateObj_Key{supper: this}
+	return &KORM_Where_KORM_test04User_D_UpdateObj_Key{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test04User_D_UpdateObj_Key) Equal(Key string) *KORM_test04User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Key` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Key)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_UpdateObj_Key) NotEqual(Key string) *KORM_test04User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Key` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Key)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_UpdateObj_Key) Greater(Key string) *KORM_test04User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Key` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Key)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_UpdateObj_Key) GreaterOrEqual(Key string) *KORM_test04User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Key` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Key)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_UpdateObj_Key) Less(Key string) *KORM_test04User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Key` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Key)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_UpdateObj_Key) LessOrEqual(Key string) *KORM_test04User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Key` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Key)
 	return this.supper
@@ -8666,6 +14421,88 @@ func (this *KORM_Where_KORM_test04User_D_UpdateObj_Key) In(vList []string) *KORM
 		this.supper.argsWhere = append(this.supper.argsWhere, v)
 	}
 	this.supper.bufWhere.WriteString(") ")
+	return this.supper
+}
+
+type KORM_Where_KORM_test04User_D_UpdateObj_Key_Length struct {
+	supper      *KORM_test04User_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test04User_D_UpdateObj_Key) Length() *KORM_Where_KORM_test04User_D_UpdateObj_Key_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test04User_D_UpdateObj_Key_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test04User_D_UpdateObj_Key_Length) Equal(length int) *KORM_test04User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Key`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test04User_D_UpdateObj_Key_Length) NotEqual(length int) *KORM_test04User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Key`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test04User_D_UpdateObj_Key_Length) GreaterOrEqual(length int) *KORM_test04User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Key`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test04User_D_UpdateObj_Key_Length) Less(length int) *KORM_test04User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Key`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test04User_D_UpdateObj_Key_Length) LessOrEqual(length int) *KORM_test04User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Key`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
 	return this.supper
 }
 func (this *KORM_test04User_D_UpdateObj) CondMultOpBegin_AND() *KORM_test04User_D_UpdateObj {
@@ -8733,48 +14570,96 @@ func (this *KORM_test04User_D_DeleteObj) MustRun() (RowsAffected int64) {
 }
 
 type KORM_Where_KORM_test04User_D_DeleteObj_Id struct {
-	supper *KORM_test04User_D_DeleteObj
+	supper      *KORM_test04User_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test04User_D_DeleteObj) Where_Id() *KORM_Where_KORM_test04User_D_DeleteObj_Id {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`Id` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test04User_D_DeleteObj_Id{supper: this}
+	return &KORM_Where_KORM_test04User_D_DeleteObj_Id{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test04User_D_DeleteObj_Id) Equal(Id int) *KORM_test04User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_DeleteObj_Id) NotEqual(Id int) *KORM_test04User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_DeleteObj_Id) Greater(Id int) *KORM_test04User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_DeleteObj_Id) GreaterOrEqual(Id int) *KORM_test04User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_DeleteObj_Id) Less(Id int) *KORM_test04User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_DeleteObj_Id) LessOrEqual(Id int) *KORM_test04User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
@@ -8797,48 +14682,96 @@ func (this *KORM_Where_KORM_test04User_D_DeleteObj_Id) In(vList []int) *KORM_tes
 }
 
 type KORM_Where_KORM_test04User_D_DeleteObj_Name struct {
-	supper *KORM_test04User_D_DeleteObj
+	supper      *KORM_test04User_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test04User_D_DeleteObj) Where_Name() *KORM_Where_KORM_test04User_D_DeleteObj_Name {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`Name` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test04User_D_DeleteObj_Name{supper: this}
+	return &KORM_Where_KORM_test04User_D_DeleteObj_Name{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test04User_D_DeleteObj_Name) Equal(Name string) *KORM_test04User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_DeleteObj_Name) NotEqual(Name string) *KORM_test04User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_DeleteObj_Name) Greater(Name string) *KORM_test04User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_DeleteObj_Name) GreaterOrEqual(Name string) *KORM_test04User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_DeleteObj_Name) Less(Name string) *KORM_test04User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_DeleteObj_Name) LessOrEqual(Name string) *KORM_test04User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
@@ -8860,49 +14793,179 @@ func (this *KORM_Where_KORM_test04User_D_DeleteObj_Name) In(vList []string) *KOR
 	return this.supper
 }
 
+type KORM_Where_KORM_test04User_D_DeleteObj_Name_Length struct {
+	supper      *KORM_test04User_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test04User_D_DeleteObj_Name) Length() *KORM_Where_KORM_test04User_D_DeleteObj_Name_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test04User_D_DeleteObj_Name_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test04User_D_DeleteObj_Name_Length) Equal(length int) *KORM_test04User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test04User_D_DeleteObj_Name_Length) NotEqual(length int) *KORM_test04User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test04User_D_DeleteObj_Name_Length) GreaterOrEqual(length int) *KORM_test04User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test04User_D_DeleteObj_Name_Length) Less(length int) *KORM_test04User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test04User_D_DeleteObj_Name_Length) LessOrEqual(length int) *KORM_test04User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test04User_D_DeleteObj_Key struct {
-	supper *KORM_test04User_D_DeleteObj
+	supper      *KORM_test04User_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test04User_D_DeleteObj) Where_Key() *KORM_Where_KORM_test04User_D_DeleteObj_Key {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`Key` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test04User_D_DeleteObj_Key{supper: this}
+	return &KORM_Where_KORM_test04User_D_DeleteObj_Key{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test04User_D_DeleteObj_Key) Equal(Key string) *KORM_test04User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Key` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Key)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_DeleteObj_Key) NotEqual(Key string) *KORM_test04User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Key` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Key)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_DeleteObj_Key) Greater(Key string) *KORM_test04User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Key` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Key)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_DeleteObj_Key) GreaterOrEqual(Key string) *KORM_test04User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Key` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Key)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_DeleteObj_Key) Less(Key string) *KORM_test04User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Key` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Key)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test04User_D_DeleteObj_Key) LessOrEqual(Key string) *KORM_test04User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Key` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Key)
 	return this.supper
@@ -8921,6 +14984,88 @@ func (this *KORM_Where_KORM_test04User_D_DeleteObj_Key) In(vList []string) *KORM
 		this.supper.argsWhere = append(this.supper.argsWhere, v)
 	}
 	this.supper.bufWhere.WriteString(") ")
+	return this.supper
+}
+
+type KORM_Where_KORM_test04User_D_DeleteObj_Key_Length struct {
+	supper      *KORM_test04User_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test04User_D_DeleteObj_Key) Length() *KORM_Where_KORM_test04User_D_DeleteObj_Key_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test04User_D_DeleteObj_Key_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test04User_D_DeleteObj_Key_Length) Equal(length int) *KORM_test04User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Key`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test04User_D_DeleteObj_Key_Length) NotEqual(length int) *KORM_test04User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Key`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test04User_D_DeleteObj_Key_Length) GreaterOrEqual(length int) *KORM_test04User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Key`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test04User_D_DeleteObj_Key_Length) Less(length int) *KORM_test04User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Key`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test04User_D_DeleteObj_Key_Length) LessOrEqual(length int) *KORM_test04User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Key`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
 	return this.supper
 }
 func (this *KORM_test04User_D_DeleteObj) CondMultOpBegin_AND() *KORM_test04User_D_DeleteObj {
@@ -9362,48 +15507,96 @@ func (this *KORM_test05User_D_SelectObj) MustRun_ResultListWithTotalMatch() (lis
 }
 
 type KORM_Where_KORM_test05User_D_SelectObj_Id struct {
-	supper *KORM_test05User_D_SelectObj
+	supper      *KORM_test05User_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05User_D_SelectObj) Where_Id() *KORM_Where_KORM_test05User_D_SelectObj_Id {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`Id` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test05User_D_SelectObj_Id{supper: this}
+	return &KORM_Where_KORM_test05User_D_SelectObj_Id{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test05User_D_SelectObj_Id) Equal(Id string) *KORM_test05User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_SelectObj_Id) NotEqual(Id string) *KORM_test05User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_SelectObj_Id) Greater(Id string) *KORM_test05User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_SelectObj_Id) GreaterOrEqual(Id string) *KORM_test05User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_SelectObj_Id) Less(Id string) *KORM_test05User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_SelectObj_Id) LessOrEqual(Id string) *KORM_test05User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
@@ -9425,49 +15618,179 @@ func (this *KORM_Where_KORM_test05User_D_SelectObj_Id) In(vList []string) *KORM_
 	return this.supper
 }
 
+type KORM_Where_KORM_test05User_D_SelectObj_Id_Length struct {
+	supper      *KORM_test05User_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test05User_D_SelectObj_Id) Length() *KORM_Where_KORM_test05User_D_SelectObj_Id_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test05User_D_SelectObj_Id_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test05User_D_SelectObj_Id_Length) Equal(length int) *KORM_test05User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05User_D_SelectObj_Id_Length) NotEqual(length int) *KORM_test05User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05User_D_SelectObj_Id_Length) GreaterOrEqual(length int) *KORM_test05User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05User_D_SelectObj_Id_Length) Less(length int) *KORM_test05User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05User_D_SelectObj_Id_Length) LessOrEqual(length int) *KORM_test05User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test05User_D_SelectObj_Age struct {
-	supper *KORM_test05User_D_SelectObj
+	supper      *KORM_test05User_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05User_D_SelectObj) Where_Age() *KORM_Where_KORM_test05User_D_SelectObj_Age {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`Age` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test05User_D_SelectObj_Age{supper: this}
+	return &KORM_Where_KORM_test05User_D_SelectObj_Age{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test05User_D_SelectObj_Age) Equal(Age int16) *KORM_test05User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Age` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Age)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_SelectObj_Age) NotEqual(Age int16) *KORM_test05User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Age` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Age)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_SelectObj_Age) Greater(Age int16) *KORM_test05User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Age` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Age)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_SelectObj_Age) GreaterOrEqual(Age int16) *KORM_test05User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Age` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Age)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_SelectObj_Age) Less(Age int16) *KORM_test05User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Age` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Age)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_SelectObj_Age) LessOrEqual(Age int16) *KORM_test05User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Age` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Age)
 	return this.supper
@@ -9490,48 +15813,96 @@ func (this *KORM_Where_KORM_test05User_D_SelectObj_Age) In(vList []int16) *KORM_
 }
 
 type KORM_Where_KORM_test05User_D_SelectObj_Name struct {
-	supper *KORM_test05User_D_SelectObj
+	supper      *KORM_test05User_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05User_D_SelectObj) Where_Name() *KORM_Where_KORM_test05User_D_SelectObj_Name {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`Name` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test05User_D_SelectObj_Name{supper: this}
+	return &KORM_Where_KORM_test05User_D_SelectObj_Name{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test05User_D_SelectObj_Name) Equal(Name string) *KORM_test05User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_SelectObj_Name) NotEqual(Name string) *KORM_test05User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_SelectObj_Name) Greater(Name string) *KORM_test05User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_SelectObj_Name) GreaterOrEqual(Name string) *KORM_test05User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_SelectObj_Name) Less(Name string) *KORM_test05User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_SelectObj_Name) LessOrEqual(Name string) *KORM_test05User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
@@ -9550,6 +15921,88 @@ func (this *KORM_Where_KORM_test05User_D_SelectObj_Name) In(vList []string) *KOR
 		this.supper.argsWhere = append(this.supper.argsWhere, v)
 	}
 	this.supper.bufWhere.WriteString(") ")
+	return this.supper
+}
+
+type KORM_Where_KORM_test05User_D_SelectObj_Name_Length struct {
+	supper      *KORM_test05User_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test05User_D_SelectObj_Name) Length() *KORM_Where_KORM_test05User_D_SelectObj_Name_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test05User_D_SelectObj_Name_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test05User_D_SelectObj_Name_Length) Equal(length int) *KORM_test05User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05User_D_SelectObj_Name_Length) NotEqual(length int) *KORM_test05User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05User_D_SelectObj_Name_Length) GreaterOrEqual(length int) *KORM_test05User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05User_D_SelectObj_Name_Length) Less(length int) *KORM_test05User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05User_D_SelectObj_Name_Length) LessOrEqual(length int) *KORM_test05User_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
 	return this.supper
 }
 func (this *KORM_test05User_D_SelectObj) CondMultOpBegin_AND() *KORM_test05User_D_SelectObj {
@@ -9658,48 +16111,96 @@ func (this *KORM_test05User_D_UpdateObj) MustRun() (RowsAffected int64) {
 }
 
 type KORM_Where_KORM_test05User_D_UpdateObj_Id struct {
-	supper *KORM_test05User_D_UpdateObj
+	supper      *KORM_test05User_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05User_D_UpdateObj) Where_Id() *KORM_Where_KORM_test05User_D_UpdateObj_Id {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`Id` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test05User_D_UpdateObj_Id{supper: this}
+	return &KORM_Where_KORM_test05User_D_UpdateObj_Id{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test05User_D_UpdateObj_Id) Equal(Id string) *KORM_test05User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_UpdateObj_Id) NotEqual(Id string) *KORM_test05User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_UpdateObj_Id) Greater(Id string) *KORM_test05User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_UpdateObj_Id) GreaterOrEqual(Id string) *KORM_test05User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_UpdateObj_Id) Less(Id string) *KORM_test05User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_UpdateObj_Id) LessOrEqual(Id string) *KORM_test05User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
@@ -9721,49 +16222,179 @@ func (this *KORM_Where_KORM_test05User_D_UpdateObj_Id) In(vList []string) *KORM_
 	return this.supper
 }
 
+type KORM_Where_KORM_test05User_D_UpdateObj_Id_Length struct {
+	supper      *KORM_test05User_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test05User_D_UpdateObj_Id) Length() *KORM_Where_KORM_test05User_D_UpdateObj_Id_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test05User_D_UpdateObj_Id_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test05User_D_UpdateObj_Id_Length) Equal(length int) *KORM_test05User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05User_D_UpdateObj_Id_Length) NotEqual(length int) *KORM_test05User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05User_D_UpdateObj_Id_Length) GreaterOrEqual(length int) *KORM_test05User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Id`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05User_D_UpdateObj_Id_Length) Less(length int) *KORM_test05User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05User_D_UpdateObj_Id_Length) LessOrEqual(length int) *KORM_test05User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test05User_D_UpdateObj_Age struct {
-	supper *KORM_test05User_D_UpdateObj
+	supper      *KORM_test05User_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05User_D_UpdateObj) Where_Age() *KORM_Where_KORM_test05User_D_UpdateObj_Age {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`Age` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test05User_D_UpdateObj_Age{supper: this}
+	return &KORM_Where_KORM_test05User_D_UpdateObj_Age{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test05User_D_UpdateObj_Age) Equal(Age int16) *KORM_test05User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Age` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Age)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_UpdateObj_Age) NotEqual(Age int16) *KORM_test05User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Age` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Age)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_UpdateObj_Age) Greater(Age int16) *KORM_test05User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Age` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Age)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_UpdateObj_Age) GreaterOrEqual(Age int16) *KORM_test05User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Age` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Age)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_UpdateObj_Age) Less(Age int16) *KORM_test05User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Age` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Age)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_UpdateObj_Age) LessOrEqual(Age int16) *KORM_test05User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Age` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Age)
 	return this.supper
@@ -9786,48 +16417,96 @@ func (this *KORM_Where_KORM_test05User_D_UpdateObj_Age) In(vList []int16) *KORM_
 }
 
 type KORM_Where_KORM_test05User_D_UpdateObj_Name struct {
-	supper *KORM_test05User_D_UpdateObj
+	supper      *KORM_test05User_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05User_D_UpdateObj) Where_Name() *KORM_Where_KORM_test05User_D_UpdateObj_Name {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`Name` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test05User_D_UpdateObj_Name{supper: this}
+	return &KORM_Where_KORM_test05User_D_UpdateObj_Name{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test05User_D_UpdateObj_Name) Equal(Name string) *KORM_test05User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_UpdateObj_Name) NotEqual(Name string) *KORM_test05User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_UpdateObj_Name) Greater(Name string) *KORM_test05User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_UpdateObj_Name) GreaterOrEqual(Name string) *KORM_test05User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_UpdateObj_Name) Less(Name string) *KORM_test05User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_UpdateObj_Name) LessOrEqual(Name string) *KORM_test05User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
@@ -9846,6 +16525,88 @@ func (this *KORM_Where_KORM_test05User_D_UpdateObj_Name) In(vList []string) *KOR
 		this.supper.argsWhere = append(this.supper.argsWhere, v)
 	}
 	this.supper.bufWhere.WriteString(") ")
+	return this.supper
+}
+
+type KORM_Where_KORM_test05User_D_UpdateObj_Name_Length struct {
+	supper      *KORM_test05User_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test05User_D_UpdateObj_Name) Length() *KORM_Where_KORM_test05User_D_UpdateObj_Name_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test05User_D_UpdateObj_Name_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test05User_D_UpdateObj_Name_Length) Equal(length int) *KORM_test05User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05User_D_UpdateObj_Name_Length) NotEqual(length int) *KORM_test05User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05User_D_UpdateObj_Name_Length) GreaterOrEqual(length int) *KORM_test05User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05User_D_UpdateObj_Name_Length) Less(length int) *KORM_test05User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05User_D_UpdateObj_Name_Length) LessOrEqual(length int) *KORM_test05User_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
 	return this.supper
 }
 func (this *KORM_test05User_D_UpdateObj) CondMultOpBegin_AND() *KORM_test05User_D_UpdateObj {
@@ -9913,48 +16674,96 @@ func (this *KORM_test05User_D_DeleteObj) MustRun() (RowsAffected int64) {
 }
 
 type KORM_Where_KORM_test05User_D_DeleteObj_Id struct {
-	supper *KORM_test05User_D_DeleteObj
+	supper      *KORM_test05User_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05User_D_DeleteObj) Where_Id() *KORM_Where_KORM_test05User_D_DeleteObj_Id {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`Id` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test05User_D_DeleteObj_Id{supper: this}
+	return &KORM_Where_KORM_test05User_D_DeleteObj_Id{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test05User_D_DeleteObj_Id) Equal(Id string) *KORM_test05User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_DeleteObj_Id) NotEqual(Id string) *KORM_test05User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_DeleteObj_Id) Greater(Id string) *KORM_test05User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_DeleteObj_Id) GreaterOrEqual(Id string) *KORM_test05User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_DeleteObj_Id) Less(Id string) *KORM_test05User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_DeleteObj_Id) LessOrEqual(Id string) *KORM_test05User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
@@ -9976,49 +16785,179 @@ func (this *KORM_Where_KORM_test05User_D_DeleteObj_Id) In(vList []string) *KORM_
 	return this.supper
 }
 
+type KORM_Where_KORM_test05User_D_DeleteObj_Id_Length struct {
+	supper      *KORM_test05User_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test05User_D_DeleteObj_Id) Length() *KORM_Where_KORM_test05User_D_DeleteObj_Id_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test05User_D_DeleteObj_Id_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test05User_D_DeleteObj_Id_Length) Equal(length int) *KORM_test05User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05User_D_DeleteObj_Id_Length) NotEqual(length int) *KORM_test05User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05User_D_DeleteObj_Id_Length) GreaterOrEqual(length int) *KORM_test05User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Id`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05User_D_DeleteObj_Id_Length) Less(length int) *KORM_test05User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05User_D_DeleteObj_Id_Length) LessOrEqual(length int) *KORM_test05User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test05User_D_DeleteObj_Age struct {
-	supper *KORM_test05User_D_DeleteObj
+	supper      *KORM_test05User_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05User_D_DeleteObj) Where_Age() *KORM_Where_KORM_test05User_D_DeleteObj_Age {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`Age` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test05User_D_DeleteObj_Age{supper: this}
+	return &KORM_Where_KORM_test05User_D_DeleteObj_Age{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test05User_D_DeleteObj_Age) Equal(Age int16) *KORM_test05User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Age` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Age)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_DeleteObj_Age) NotEqual(Age int16) *KORM_test05User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Age` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Age)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_DeleteObj_Age) Greater(Age int16) *KORM_test05User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Age` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Age)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_DeleteObj_Age) GreaterOrEqual(Age int16) *KORM_test05User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Age` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Age)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_DeleteObj_Age) Less(Age int16) *KORM_test05User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Age` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Age)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_DeleteObj_Age) LessOrEqual(Age int16) *KORM_test05User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Age` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Age)
 	return this.supper
@@ -10041,48 +16980,96 @@ func (this *KORM_Where_KORM_test05User_D_DeleteObj_Age) In(vList []int16) *KORM_
 }
 
 type KORM_Where_KORM_test05User_D_DeleteObj_Name struct {
-	supper *KORM_test05User_D_DeleteObj
+	supper      *KORM_test05User_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05User_D_DeleteObj) Where_Name() *KORM_Where_KORM_test05User_D_DeleteObj_Name {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`Name` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test05User_D_DeleteObj_Name{supper: this}
+	return &KORM_Where_KORM_test05User_D_DeleteObj_Name{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test05User_D_DeleteObj_Name) Equal(Name string) *KORM_test05User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_DeleteObj_Name) NotEqual(Name string) *KORM_test05User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_DeleteObj_Name) Greater(Name string) *KORM_test05User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_DeleteObj_Name) GreaterOrEqual(Name string) *KORM_test05User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_DeleteObj_Name) Less(Name string) *KORM_test05User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_DeleteObj_Name) LessOrEqual(Name string) *KORM_test05User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
@@ -10101,6 +17088,88 @@ func (this *KORM_Where_KORM_test05User_D_DeleteObj_Name) In(vList []string) *KOR
 		this.supper.argsWhere = append(this.supper.argsWhere, v)
 	}
 	this.supper.bufWhere.WriteString(") ")
+	return this.supper
+}
+
+type KORM_Where_KORM_test05User_D_DeleteObj_Name_Length struct {
+	supper      *KORM_test05User_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test05User_D_DeleteObj_Name) Length() *KORM_Where_KORM_test05User_D_DeleteObj_Name_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test05User_D_DeleteObj_Name_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test05User_D_DeleteObj_Name_Length) Equal(length int) *KORM_test05User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05User_D_DeleteObj_Name_Length) NotEqual(length int) *KORM_test05User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05User_D_DeleteObj_Name_Length) GreaterOrEqual(length int) *KORM_test05User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05User_D_DeleteObj_Name_Length) Less(length int) *KORM_test05User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05User_D_DeleteObj_Name_Length) LessOrEqual(length int) *KORM_test05User_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
 	return this.supper
 }
 func (this *KORM_test05User_D_DeleteObj) CondMultOpBegin_AND() *KORM_test05User_D_DeleteObj {
@@ -10542,48 +17611,96 @@ func (this *KORM_test05Group_D_SelectObj) MustRun_ResultListWithTotalMatch() (li
 }
 
 type KORM_Where_KORM_test05Group_D_SelectObj_Id struct {
-	supper *KORM_test05Group_D_SelectObj
+	supper      *KORM_test05Group_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05Group_D_SelectObj) Where_Id() *KORM_Where_KORM_test05Group_D_SelectObj_Id {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`Id` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test05Group_D_SelectObj_Id{supper: this}
+	return &KORM_Where_KORM_test05Group_D_SelectObj_Id{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test05Group_D_SelectObj_Id) Equal(Id string) *KORM_test05Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_SelectObj_Id) NotEqual(Id string) *KORM_test05Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_SelectObj_Id) Greater(Id string) *KORM_test05Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_SelectObj_Id) GreaterOrEqual(Id string) *KORM_test05Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_SelectObj_Id) Less(Id string) *KORM_test05Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_SelectObj_Id) LessOrEqual(Id string) *KORM_test05Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
@@ -10605,49 +17722,179 @@ func (this *KORM_Where_KORM_test05Group_D_SelectObj_Id) In(vList []string) *KORM
 	return this.supper
 }
 
+type KORM_Where_KORM_test05Group_D_SelectObj_Id_Length struct {
+	supper      *KORM_test05Group_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test05Group_D_SelectObj_Id) Length() *KORM_Where_KORM_test05Group_D_SelectObj_Id_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test05Group_D_SelectObj_Id_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test05Group_D_SelectObj_Id_Length) Equal(length int) *KORM_test05Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05Group_D_SelectObj_Id_Length) NotEqual(length int) *KORM_test05Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05Group_D_SelectObj_Id_Length) GreaterOrEqual(length int) *KORM_test05Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05Group_D_SelectObj_Id_Length) Less(length int) *KORM_test05Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05Group_D_SelectObj_Id_Length) LessOrEqual(length int) *KORM_test05Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test05Group_D_SelectObj_Name struct {
-	supper *KORM_test05Group_D_SelectObj
+	supper      *KORM_test05Group_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05Group_D_SelectObj) Where_Name() *KORM_Where_KORM_test05Group_D_SelectObj_Name {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`Name` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test05Group_D_SelectObj_Name{supper: this}
+	return &KORM_Where_KORM_test05Group_D_SelectObj_Name{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test05Group_D_SelectObj_Name) Equal(Name string) *KORM_test05Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_SelectObj_Name) NotEqual(Name string) *KORM_test05Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_SelectObj_Name) Greater(Name string) *KORM_test05Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_SelectObj_Name) GreaterOrEqual(Name string) *KORM_test05Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_SelectObj_Name) Less(Name string) *KORM_test05Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_SelectObj_Name) LessOrEqual(Name string) *KORM_test05Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
@@ -10666,6 +17913,88 @@ func (this *KORM_Where_KORM_test05Group_D_SelectObj_Name) In(vList []string) *KO
 		this.supper.argsWhere = append(this.supper.argsWhere, v)
 	}
 	this.supper.bufWhere.WriteString(") ")
+	return this.supper
+}
+
+type KORM_Where_KORM_test05Group_D_SelectObj_Name_Length struct {
+	supper      *KORM_test05Group_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test05Group_D_SelectObj_Name) Length() *KORM_Where_KORM_test05Group_D_SelectObj_Name_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test05Group_D_SelectObj_Name_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test05Group_D_SelectObj_Name_Length) Equal(length int) *KORM_test05Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05Group_D_SelectObj_Name_Length) NotEqual(length int) *KORM_test05Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05Group_D_SelectObj_Name_Length) GreaterOrEqual(length int) *KORM_test05Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05Group_D_SelectObj_Name_Length) Less(length int) *KORM_test05Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05Group_D_SelectObj_Name_Length) LessOrEqual(length int) *KORM_test05Group_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
 	return this.supper
 }
 func (this *KORM_test05Group_D_SelectObj) CondMultOpBegin_AND() *KORM_test05Group_D_SelectObj {
@@ -10754,48 +18083,96 @@ func (this *KORM_test05Group_D_UpdateObj) MustRun() (RowsAffected int64) {
 }
 
 type KORM_Where_KORM_test05Group_D_UpdateObj_Id struct {
-	supper *KORM_test05Group_D_UpdateObj
+	supper      *KORM_test05Group_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05Group_D_UpdateObj) Where_Id() *KORM_Where_KORM_test05Group_D_UpdateObj_Id {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`Id` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test05Group_D_UpdateObj_Id{supper: this}
+	return &KORM_Where_KORM_test05Group_D_UpdateObj_Id{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test05Group_D_UpdateObj_Id) Equal(Id string) *KORM_test05Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_UpdateObj_Id) NotEqual(Id string) *KORM_test05Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_UpdateObj_Id) Greater(Id string) *KORM_test05Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_UpdateObj_Id) GreaterOrEqual(Id string) *KORM_test05Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_UpdateObj_Id) Less(Id string) *KORM_test05Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_UpdateObj_Id) LessOrEqual(Id string) *KORM_test05Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
@@ -10817,49 +18194,179 @@ func (this *KORM_Where_KORM_test05Group_D_UpdateObj_Id) In(vList []string) *KORM
 	return this.supper
 }
 
+type KORM_Where_KORM_test05Group_D_UpdateObj_Id_Length struct {
+	supper      *KORM_test05Group_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test05Group_D_UpdateObj_Id) Length() *KORM_Where_KORM_test05Group_D_UpdateObj_Id_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test05Group_D_UpdateObj_Id_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test05Group_D_UpdateObj_Id_Length) Equal(length int) *KORM_test05Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05Group_D_UpdateObj_Id_Length) NotEqual(length int) *KORM_test05Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05Group_D_UpdateObj_Id_Length) GreaterOrEqual(length int) *KORM_test05Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Id`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05Group_D_UpdateObj_Id_Length) Less(length int) *KORM_test05Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05Group_D_UpdateObj_Id_Length) LessOrEqual(length int) *KORM_test05Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test05Group_D_UpdateObj_Name struct {
-	supper *KORM_test05Group_D_UpdateObj
+	supper      *KORM_test05Group_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05Group_D_UpdateObj) Where_Name() *KORM_Where_KORM_test05Group_D_UpdateObj_Name {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`Name` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test05Group_D_UpdateObj_Name{supper: this}
+	return &KORM_Where_KORM_test05Group_D_UpdateObj_Name{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test05Group_D_UpdateObj_Name) Equal(Name string) *KORM_test05Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_UpdateObj_Name) NotEqual(Name string) *KORM_test05Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_UpdateObj_Name) Greater(Name string) *KORM_test05Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_UpdateObj_Name) GreaterOrEqual(Name string) *KORM_test05Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_UpdateObj_Name) Less(Name string) *KORM_test05Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_UpdateObj_Name) LessOrEqual(Name string) *KORM_test05Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
@@ -10878,6 +18385,88 @@ func (this *KORM_Where_KORM_test05Group_D_UpdateObj_Name) In(vList []string) *KO
 		this.supper.argsWhere = append(this.supper.argsWhere, v)
 	}
 	this.supper.bufWhere.WriteString(") ")
+	return this.supper
+}
+
+type KORM_Where_KORM_test05Group_D_UpdateObj_Name_Length struct {
+	supper      *KORM_test05Group_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test05Group_D_UpdateObj_Name) Length() *KORM_Where_KORM_test05Group_D_UpdateObj_Name_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test05Group_D_UpdateObj_Name_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test05Group_D_UpdateObj_Name_Length) Equal(length int) *KORM_test05Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05Group_D_UpdateObj_Name_Length) NotEqual(length int) *KORM_test05Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05Group_D_UpdateObj_Name_Length) GreaterOrEqual(length int) *KORM_test05Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05Group_D_UpdateObj_Name_Length) Less(length int) *KORM_test05Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05Group_D_UpdateObj_Name_Length) LessOrEqual(length int) *KORM_test05Group_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
 	return this.supper
 }
 func (this *KORM_test05Group_D_UpdateObj) CondMultOpBegin_AND() *KORM_test05Group_D_UpdateObj {
@@ -10945,48 +18534,96 @@ func (this *KORM_test05Group_D_DeleteObj) MustRun() (RowsAffected int64) {
 }
 
 type KORM_Where_KORM_test05Group_D_DeleteObj_Id struct {
-	supper *KORM_test05Group_D_DeleteObj
+	supper      *KORM_test05Group_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05Group_D_DeleteObj) Where_Id() *KORM_Where_KORM_test05Group_D_DeleteObj_Id {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`Id` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test05Group_D_DeleteObj_Id{supper: this}
+	return &KORM_Where_KORM_test05Group_D_DeleteObj_Id{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test05Group_D_DeleteObj_Id) Equal(Id string) *KORM_test05Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_DeleteObj_Id) NotEqual(Id string) *KORM_test05Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_DeleteObj_Id) Greater(Id string) *KORM_test05Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_DeleteObj_Id) GreaterOrEqual(Id string) *KORM_test05Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_DeleteObj_Id) Less(Id string) *KORM_test05Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_DeleteObj_Id) LessOrEqual(Id string) *KORM_test05Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Id` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
@@ -11008,49 +18645,179 @@ func (this *KORM_Where_KORM_test05Group_D_DeleteObj_Id) In(vList []string) *KORM
 	return this.supper
 }
 
+type KORM_Where_KORM_test05Group_D_DeleteObj_Id_Length struct {
+	supper      *KORM_test05Group_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test05Group_D_DeleteObj_Id) Length() *KORM_Where_KORM_test05Group_D_DeleteObj_Id_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test05Group_D_DeleteObj_Id_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test05Group_D_DeleteObj_Id_Length) Equal(length int) *KORM_test05Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05Group_D_DeleteObj_Id_Length) NotEqual(length int) *KORM_test05Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05Group_D_DeleteObj_Id_Length) GreaterOrEqual(length int) *KORM_test05Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Id`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05Group_D_DeleteObj_Id_Length) Less(length int) *KORM_test05Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05Group_D_DeleteObj_Id_Length) LessOrEqual(length int) *KORM_test05Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test05Group_D_DeleteObj_Name struct {
-	supper *KORM_test05Group_D_DeleteObj
+	supper      *KORM_test05Group_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05Group_D_DeleteObj) Where_Name() *KORM_Where_KORM_test05Group_D_DeleteObj_Name {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`Name` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test05Group_D_DeleteObj_Name{supper: this}
+	return &KORM_Where_KORM_test05Group_D_DeleteObj_Name{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test05Group_D_DeleteObj_Name) Equal(Name string) *KORM_test05Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_DeleteObj_Name) NotEqual(Name string) *KORM_test05Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_DeleteObj_Name) Greater(Name string) *KORM_test05Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_DeleteObj_Name) GreaterOrEqual(Name string) *KORM_test05Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_DeleteObj_Name) Less(Name string) *KORM_test05Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_DeleteObj_Name) LessOrEqual(Name string) *KORM_test05Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`Name` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Name)
 	return this.supper
@@ -11069,6 +18836,88 @@ func (this *KORM_Where_KORM_test05Group_D_DeleteObj_Name) In(vList []string) *KO
 		this.supper.argsWhere = append(this.supper.argsWhere, v)
 	}
 	this.supper.bufWhere.WriteString(") ")
+	return this.supper
+}
+
+type KORM_Where_KORM_test05Group_D_DeleteObj_Name_Length struct {
+	supper      *KORM_test05Group_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test05Group_D_DeleteObj_Name) Length() *KORM_Where_KORM_test05Group_D_DeleteObj_Name_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test05Group_D_DeleteObj_Name_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test05Group_D_DeleteObj_Name_Length) Equal(length int) *KORM_test05Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05Group_D_DeleteObj_Name_Length) NotEqual(length int) *KORM_test05Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05Group_D_DeleteObj_Name_Length) GreaterOrEqual(length int) *KORM_test05Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05Group_D_DeleteObj_Name_Length) Less(length int) *KORM_test05Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05Group_D_DeleteObj_Name_Length) LessOrEqual(length int) *KORM_test05Group_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
 	return this.supper
 }
 func (this *KORM_test05Group_D_DeleteObj) CondMultOpBegin_AND() *KORM_test05Group_D_DeleteObj {
@@ -11546,48 +19395,96 @@ type KORM_test05User_D_BeLeftJoin struct {
 	orderByP     *[]string
 }
 type KORM_Where_KORM_test05User_D_BeLeftJoin_Id struct {
-	supper *KORM_test05User_D_BeLeftJoin
+	supper      *KORM_test05User_D_BeLeftJoin
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05User_D_BeLeftJoin) Where_Id() *KORM_Where_KORM_test05User_D_BeLeftJoin_Id {
-	if this.bufWhere.Len() > 0 {
-		if (*this.isLinkBeginP) == false {
-			this.bufWhere.WriteString((*this.linkOpListP)[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`Id` ")
-
+	isLinkBeginValue := (*this.isLinkBeginP)
 	(*this.isLinkBeginP) = false
-	return &KORM_Where_KORM_test05User_D_BeLeftJoin_Id{supper: this}
+	return &KORM_Where_KORM_test05User_D_BeLeftJoin_Id{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: (*this.linkOpListP)}
 }
 func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Id) Equal(Id string) *KORM_test05User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Id) NotEqual(Id string) *KORM_test05User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Id) Greater(Id string) *KORM_test05User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Id) GreaterOrEqual(Id string) *KORM_test05User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Id) Less(Id string) *KORM_test05User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Id) LessOrEqual(Id string) *KORM_test05User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Id)
 	return this.supper
@@ -11609,49 +19506,179 @@ func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Id) In(vList []string) *KORM
 	return this.supper
 }
 
+type KORM_Where_KORM_test05User_D_BeLeftJoin_Id_Length struct {
+	supper      *KORM_test05User_D_BeLeftJoin
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Id) Length() *KORM_Where_KORM_test05User_D_BeLeftJoin_Id_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test05User_D_BeLeftJoin_Id_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Id_Length) Equal(length int) *KORM_test05User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Id_Length) NotEqual(length int) *KORM_test05User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Id_Length) GreaterOrEqual(length int) *KORM_test05User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Id_Length) Less(length int) *KORM_test05User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Id_Length) LessOrEqual(length int) *KORM_test05User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test05User_D_BeLeftJoin_Age struct {
-	supper *KORM_test05User_D_BeLeftJoin
+	supper      *KORM_test05User_D_BeLeftJoin
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05User_D_BeLeftJoin) Where_Age() *KORM_Where_KORM_test05User_D_BeLeftJoin_Age {
-	if this.bufWhere.Len() > 0 {
-		if (*this.isLinkBeginP) == false {
-			this.bufWhere.WriteString((*this.linkOpListP)[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`Age` ")
-
+	isLinkBeginValue := (*this.isLinkBeginP)
 	(*this.isLinkBeginP) = false
-	return &KORM_Where_KORM_test05User_D_BeLeftJoin_Age{supper: this}
+	return &KORM_Where_KORM_test05User_D_BeLeftJoin_Age{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: (*this.linkOpListP)}
 }
 func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Age) Equal(Age int16) *KORM_test05User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Age` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Age)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Age) NotEqual(Age int16) *KORM_test05User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Age` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Age)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Age) Greater(Age int16) *KORM_test05User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Age` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Age)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Age) GreaterOrEqual(Age int16) *KORM_test05User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Age` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Age)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Age) Less(Age int16) *KORM_test05User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Age` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Age)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Age) LessOrEqual(Age int16) *KORM_test05User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Age` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Age)
 	return this.supper
@@ -11674,48 +19701,96 @@ func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Age) In(vList []int16) *KORM
 }
 
 type KORM_Where_KORM_test05User_D_BeLeftJoin_Name struct {
-	supper *KORM_test05User_D_BeLeftJoin
+	supper      *KORM_test05User_D_BeLeftJoin
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05User_D_BeLeftJoin) Where_Name() *KORM_Where_KORM_test05User_D_BeLeftJoin_Name {
-	if this.bufWhere.Len() > 0 {
-		if (*this.isLinkBeginP) == false {
-			this.bufWhere.WriteString((*this.linkOpListP)[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`Name` ")
-
+	isLinkBeginValue := (*this.isLinkBeginP)
 	(*this.isLinkBeginP) = false
-	return &KORM_Where_KORM_test05User_D_BeLeftJoin_Name{supper: this}
+	return &KORM_Where_KORM_test05User_D_BeLeftJoin_Name{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: (*this.linkOpListP)}
 }
 func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Name) Equal(Name string) *KORM_test05User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Name) NotEqual(Name string) *KORM_test05User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Name) Greater(Name string) *KORM_test05User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Name) GreaterOrEqual(Name string) *KORM_test05User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Name) Less(Name string) *KORM_test05User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Name) LessOrEqual(Name string) *KORM_test05User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Name)
 	return this.supper
@@ -11734,6 +19809,88 @@ func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Name) In(vList []string) *KO
 		(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), v)
 	}
 	this.supper.bufWhere.WriteString(") ")
+	return this.supper
+}
+
+type KORM_Where_KORM_test05User_D_BeLeftJoin_Name_Length struct {
+	supper      *KORM_test05User_D_BeLeftJoin
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Name) Length() *KORM_Where_KORM_test05User_D_BeLeftJoin_Name_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test05User_D_BeLeftJoin_Name_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Name_Length) Equal(length int) *KORM_test05User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Name_Length) NotEqual(length int) *KORM_test05User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Name_Length) GreaterOrEqual(length int) *KORM_test05User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Name_Length) Less(length int) *KORM_test05User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05User_D_BeLeftJoin_Name_Length) LessOrEqual(length int) *KORM_test05User_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
 	return this.supper
 }
 func (this *KORM_test05User_D_BeLeftJoin) CondMultOpBegin_AND() *KORM_test05User_D_BeLeftJoin {
@@ -11820,48 +19977,96 @@ type KORM_test05Group_D_BeLeftJoin struct {
 	orderByP     *[]string
 }
 type KORM_Where_KORM_test05Group_D_BeLeftJoin_Id struct {
-	supper *KORM_test05Group_D_BeLeftJoin
+	supper      *KORM_test05Group_D_BeLeftJoin
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05Group_D_BeLeftJoin) Where_Id() *KORM_Where_KORM_test05Group_D_BeLeftJoin_Id {
-	if this.bufWhere.Len() > 0 {
-		if (*this.isLinkBeginP) == false {
-			this.bufWhere.WriteString((*this.linkOpListP)[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`Id` ")
-
+	isLinkBeginValue := (*this.isLinkBeginP)
 	(*this.isLinkBeginP) = false
-	return &KORM_Where_KORM_test05Group_D_BeLeftJoin_Id{supper: this}
+	return &KORM_Where_KORM_test05Group_D_BeLeftJoin_Id{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: (*this.linkOpListP)}
 }
 func (this *KORM_Where_KORM_test05Group_D_BeLeftJoin_Id) Equal(Id string) *KORM_test05Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_BeLeftJoin_Id) NotEqual(Id string) *KORM_test05Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_BeLeftJoin_Id) Greater(Id string) *KORM_test05Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_BeLeftJoin_Id) GreaterOrEqual(Id string) *KORM_test05Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_BeLeftJoin_Id) Less(Id string) *KORM_test05Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_BeLeftJoin_Id) LessOrEqual(Id string) *KORM_test05Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Id)
 	return this.supper
@@ -11883,49 +20088,179 @@ func (this *KORM_Where_KORM_test05Group_D_BeLeftJoin_Id) In(vList []string) *KOR
 	return this.supper
 }
 
+type KORM_Where_KORM_test05Group_D_BeLeftJoin_Id_Length struct {
+	supper      *KORM_test05Group_D_BeLeftJoin
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test05Group_D_BeLeftJoin_Id) Length() *KORM_Where_KORM_test05Group_D_BeLeftJoin_Id_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test05Group_D_BeLeftJoin_Id_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test05Group_D_BeLeftJoin_Id_Length) Equal(length int) *KORM_test05Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05Group_D_BeLeftJoin_Id_Length) NotEqual(length int) *KORM_test05Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05Group_D_BeLeftJoin_Id_Length) GreaterOrEqual(length int) *KORM_test05Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05Group_D_BeLeftJoin_Id_Length) Less(length int) *KORM_test05Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05Group_D_BeLeftJoin_Id_Length) LessOrEqual(length int) *KORM_test05Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test05Group_D_BeLeftJoin_Name struct {
-	supper *KORM_test05Group_D_BeLeftJoin
+	supper      *KORM_test05Group_D_BeLeftJoin
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05Group_D_BeLeftJoin) Where_Name() *KORM_Where_KORM_test05Group_D_BeLeftJoin_Name {
-	if this.bufWhere.Len() > 0 {
-		if (*this.isLinkBeginP) == false {
-			this.bufWhere.WriteString((*this.linkOpListP)[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`Name` ")
-
+	isLinkBeginValue := (*this.isLinkBeginP)
 	(*this.isLinkBeginP) = false
-	return &KORM_Where_KORM_test05Group_D_BeLeftJoin_Name{supper: this}
+	return &KORM_Where_KORM_test05Group_D_BeLeftJoin_Name{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: (*this.linkOpListP)}
 }
 func (this *KORM_Where_KORM_test05Group_D_BeLeftJoin_Name) Equal(Name string) *KORM_test05Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_BeLeftJoin_Name) NotEqual(Name string) *KORM_test05Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_BeLeftJoin_Name) Greater(Name string) *KORM_test05Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_BeLeftJoin_Name) GreaterOrEqual(Name string) *KORM_test05Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_BeLeftJoin_Name) Less(Name string) *KORM_test05Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Name)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05Group_D_BeLeftJoin_Name) LessOrEqual(Name string) *KORM_test05Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), Name)
 	return this.supper
@@ -11944,6 +20279,88 @@ func (this *KORM_Where_KORM_test05Group_D_BeLeftJoin_Name) In(vList []string) *K
 		(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), v)
 	}
 	this.supper.bufWhere.WriteString(") ")
+	return this.supper
+}
+
+type KORM_Where_KORM_test05Group_D_BeLeftJoin_Name_Length struct {
+	supper      *KORM_test05Group_D_BeLeftJoin
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test05Group_D_BeLeftJoin_Name) Length() *KORM_Where_KORM_test05Group_D_BeLeftJoin_Name_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test05Group_D_BeLeftJoin_Name_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test05Group_D_BeLeftJoin_Name_Length) Equal(length int) *KORM_test05Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05Group_D_BeLeftJoin_Name_Length) NotEqual(length int) *KORM_test05Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05Group_D_BeLeftJoin_Name_Length) GreaterOrEqual(length int) *KORM_test05Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05Group_D_BeLeftJoin_Name_Length) Less(length int) *KORM_test05Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05Group_D_BeLeftJoin_Name_Length) LessOrEqual(length int) *KORM_test05Group_D_BeLeftJoin {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	(*this.supper.argsWhereP) = append((*this.supper.argsWhereP), length)
 	return this.supper
 }
 func (this *KORM_test05Group_D_BeLeftJoin) CondMultOpBegin_AND() *KORM_test05Group_D_BeLeftJoin {
@@ -12011,48 +20428,96 @@ func (this *KORM_test05Group_D_BeLeftJoin) OrderBy_Name() *KORM_test05Group_D_Be
 }
 
 type KORM_Where_KORM_test05UserGroup_D_SelectObj_UserId struct {
-	supper *KORM_test05UserGroup_D_SelectObj
+	supper      *KORM_test05UserGroup_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05UserGroup_D_SelectObj) Where_UserId() *KORM_Where_KORM_test05UserGroup_D_SelectObj_UserId {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`UserId` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test05UserGroup_D_SelectObj_UserId{supper: this}
+	return &KORM_Where_KORM_test05UserGroup_D_SelectObj_UserId{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_SelectObj_UserId) Equal(UserId string) *KORM_test05UserGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`UserId` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_SelectObj_UserId) NotEqual(UserId string) *KORM_test05UserGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`UserId` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_SelectObj_UserId) Greater(UserId string) *KORM_test05UserGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`UserId` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_SelectObj_UserId) GreaterOrEqual(UserId string) *KORM_test05UserGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`UserId` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_SelectObj_UserId) Less(UserId string) *KORM_test05UserGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`UserId` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_SelectObj_UserId) LessOrEqual(UserId string) *KORM_test05UserGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`UserId` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
@@ -12074,49 +20539,179 @@ func (this *KORM_Where_KORM_test05UserGroup_D_SelectObj_UserId) In(vList []strin
 	return this.supper
 }
 
+type KORM_Where_KORM_test05UserGroup_D_SelectObj_UserId_Length struct {
+	supper      *KORM_test05UserGroup_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test05UserGroup_D_SelectObj_UserId) Length() *KORM_Where_KORM_test05UserGroup_D_SelectObj_UserId_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test05UserGroup_D_SelectObj_UserId_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test05UserGroup_D_SelectObj_UserId_Length) Equal(length int) *KORM_test05UserGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserGroup_D_SelectObj_UserId_Length) NotEqual(length int) *KORM_test05UserGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserGroup_D_SelectObj_UserId_Length) GreaterOrEqual(length int) *KORM_test05UserGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserGroup_D_SelectObj_UserId_Length) Less(length int) *KORM_test05UserGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserGroup_D_SelectObj_UserId_Length) LessOrEqual(length int) *KORM_test05UserGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test05UserGroup_D_SelectObj_GroupId struct {
-	supper *KORM_test05UserGroup_D_SelectObj
+	supper      *KORM_test05UserGroup_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05UserGroup_D_SelectObj) Where_GroupId() *KORM_Where_KORM_test05UserGroup_D_SelectObj_GroupId {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`GroupId` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test05UserGroup_D_SelectObj_GroupId{supper: this}
+	return &KORM_Where_KORM_test05UserGroup_D_SelectObj_GroupId{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_SelectObj_GroupId) Equal(GroupId string) *KORM_test05UserGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`GroupId` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_SelectObj_GroupId) NotEqual(GroupId string) *KORM_test05UserGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`GroupId` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_SelectObj_GroupId) Greater(GroupId string) *KORM_test05UserGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`GroupId` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_SelectObj_GroupId) GreaterOrEqual(GroupId string) *KORM_test05UserGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`GroupId` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_SelectObj_GroupId) Less(GroupId string) *KORM_test05UserGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`GroupId` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_SelectObj_GroupId) LessOrEqual(GroupId string) *KORM_test05UserGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`GroupId` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
@@ -12138,48 +20733,169 @@ func (this *KORM_Where_KORM_test05UserGroup_D_SelectObj_GroupId) In(vList []stri
 	return this.supper
 }
 
+type KORM_Where_KORM_test05UserGroup_D_SelectObj_GroupId_Length struct {
+	supper      *KORM_test05UserGroup_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test05UserGroup_D_SelectObj_GroupId) Length() *KORM_Where_KORM_test05UserGroup_D_SelectObj_GroupId_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test05UserGroup_D_SelectObj_GroupId_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test05UserGroup_D_SelectObj_GroupId_Length) Equal(length int) *KORM_test05UserGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserGroup_D_SelectObj_GroupId_Length) NotEqual(length int) *KORM_test05UserGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserGroup_D_SelectObj_GroupId_Length) GreaterOrEqual(length int) *KORM_test05UserGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserGroup_D_SelectObj_GroupId_Length) Less(length int) *KORM_test05UserGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserGroup_D_SelectObj_GroupId_Length) LessOrEqual(length int) *KORM_test05UserGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test05UserGroup_D_SelectObj_CreateTime struct {
-	supper *KORM_test05UserGroup_D_SelectObj
+	supper      *KORM_test05UserGroup_D_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05UserGroup_D_SelectObj) Where_CreateTime() *KORM_Where_KORM_test05UserGroup_D_SelectObj_CreateTime {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.joinNode.TableName + `.` + "`CreateTime` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test05UserGroup_D_SelectObj_CreateTime{supper: this}
+	return &KORM_Where_KORM_test05UserGroup_D_SelectObj_CreateTime{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_SelectObj_CreateTime) Equal(CreateTime time.Time) *KORM_test05UserGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_SelectObj_CreateTime) NotEqual(CreateTime time.Time) *KORM_test05UserGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_SelectObj_CreateTime) GreaterOrEqual(CreateTime time.Time) *KORM_test05UserGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_SelectObj_CreateTime) Less(CreateTime time.Time) *KORM_test05UserGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_SelectObj_CreateTime) LessOrEqual(CreateTime time.Time) *KORM_test05UserGroup_D_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
@@ -12271,48 +20987,96 @@ func (this *KORM_test05UserGroup_D_UpdateObj) MustRun() (RowsAffected int64) {
 }
 
 type KORM_Where_KORM_test05UserGroup_D_UpdateObj_UserId struct {
-	supper *KORM_test05UserGroup_D_UpdateObj
+	supper      *KORM_test05UserGroup_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05UserGroup_D_UpdateObj) Where_UserId() *KORM_Where_KORM_test05UserGroup_D_UpdateObj_UserId {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`UserId` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test05UserGroup_D_UpdateObj_UserId{supper: this}
+	return &KORM_Where_KORM_test05UserGroup_D_UpdateObj_UserId{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_UpdateObj_UserId) Equal(UserId string) *KORM_test05UserGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_UpdateObj_UserId) NotEqual(UserId string) *KORM_test05UserGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_UpdateObj_UserId) Greater(UserId string) *KORM_test05UserGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_UpdateObj_UserId) GreaterOrEqual(UserId string) *KORM_test05UserGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_UpdateObj_UserId) Less(UserId string) *KORM_test05UserGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_UpdateObj_UserId) LessOrEqual(UserId string) *KORM_test05UserGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
@@ -12334,49 +21098,179 @@ func (this *KORM_Where_KORM_test05UserGroup_D_UpdateObj_UserId) In(vList []strin
 	return this.supper
 }
 
+type KORM_Where_KORM_test05UserGroup_D_UpdateObj_UserId_Length struct {
+	supper      *KORM_test05UserGroup_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test05UserGroup_D_UpdateObj_UserId) Length() *KORM_Where_KORM_test05UserGroup_D_UpdateObj_UserId_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test05UserGroup_D_UpdateObj_UserId_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test05UserGroup_D_UpdateObj_UserId_Length) Equal(length int) *KORM_test05UserGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserGroup_D_UpdateObj_UserId_Length) NotEqual(length int) *KORM_test05UserGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserGroup_D_UpdateObj_UserId_Length) GreaterOrEqual(length int) *KORM_test05UserGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserGroup_D_UpdateObj_UserId_Length) Less(length int) *KORM_test05UserGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserGroup_D_UpdateObj_UserId_Length) LessOrEqual(length int) *KORM_test05UserGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test05UserGroup_D_UpdateObj_GroupId struct {
-	supper *KORM_test05UserGroup_D_UpdateObj
+	supper      *KORM_test05UserGroup_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05UserGroup_D_UpdateObj) Where_GroupId() *KORM_Where_KORM_test05UserGroup_D_UpdateObj_GroupId {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`GroupId` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test05UserGroup_D_UpdateObj_GroupId{supper: this}
+	return &KORM_Where_KORM_test05UserGroup_D_UpdateObj_GroupId{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_UpdateObj_GroupId) Equal(GroupId string) *KORM_test05UserGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_UpdateObj_GroupId) NotEqual(GroupId string) *KORM_test05UserGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_UpdateObj_GroupId) Greater(GroupId string) *KORM_test05UserGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_UpdateObj_GroupId) GreaterOrEqual(GroupId string) *KORM_test05UserGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_UpdateObj_GroupId) Less(GroupId string) *KORM_test05UserGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_UpdateObj_GroupId) LessOrEqual(GroupId string) *KORM_test05UserGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
@@ -12398,48 +21292,169 @@ func (this *KORM_Where_KORM_test05UserGroup_D_UpdateObj_GroupId) In(vList []stri
 	return this.supper
 }
 
+type KORM_Where_KORM_test05UserGroup_D_UpdateObj_GroupId_Length struct {
+	supper      *KORM_test05UserGroup_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test05UserGroup_D_UpdateObj_GroupId) Length() *KORM_Where_KORM_test05UserGroup_D_UpdateObj_GroupId_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test05UserGroup_D_UpdateObj_GroupId_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test05UserGroup_D_UpdateObj_GroupId_Length) Equal(length int) *KORM_test05UserGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserGroup_D_UpdateObj_GroupId_Length) NotEqual(length int) *KORM_test05UserGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserGroup_D_UpdateObj_GroupId_Length) GreaterOrEqual(length int) *KORM_test05UserGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserGroup_D_UpdateObj_GroupId_Length) Less(length int) *KORM_test05UserGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserGroup_D_UpdateObj_GroupId_Length) LessOrEqual(length int) *KORM_test05UserGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test05UserGroup_D_UpdateObj_CreateTime struct {
-	supper *KORM_test05UserGroup_D_UpdateObj
+	supper      *KORM_test05UserGroup_D_UpdateObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05UserGroup_D_UpdateObj) Where_CreateTime() *KORM_Where_KORM_test05UserGroup_D_UpdateObj_CreateTime {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`CreateTime` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test05UserGroup_D_UpdateObj_CreateTime{supper: this}
+	return &KORM_Where_KORM_test05UserGroup_D_UpdateObj_CreateTime{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_UpdateObj_CreateTime) Equal(CreateTime time.Time) *KORM_test05UserGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_UpdateObj_CreateTime) NotEqual(CreateTime time.Time) *KORM_test05UserGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_UpdateObj_CreateTime) GreaterOrEqual(CreateTime time.Time) *KORM_test05UserGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_UpdateObj_CreateTime) Less(CreateTime time.Time) *KORM_test05UserGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_UpdateObj_CreateTime) LessOrEqual(CreateTime time.Time) *KORM_test05UserGroup_D_UpdateObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
@@ -12510,48 +21525,96 @@ func (this *KORM_test05UserGroup_D_DeleteObj) MustRun() (RowsAffected int64) {
 }
 
 type KORM_Where_KORM_test05UserGroup_D_DeleteObj_UserId struct {
-	supper *KORM_test05UserGroup_D_DeleteObj
+	supper      *KORM_test05UserGroup_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05UserGroup_D_DeleteObj) Where_UserId() *KORM_Where_KORM_test05UserGroup_D_DeleteObj_UserId {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`UserId` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test05UserGroup_D_DeleteObj_UserId{supper: this}
+	return &KORM_Where_KORM_test05UserGroup_D_DeleteObj_UserId{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_DeleteObj_UserId) Equal(UserId string) *KORM_test05UserGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_DeleteObj_UserId) NotEqual(UserId string) *KORM_test05UserGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_DeleteObj_UserId) Greater(UserId string) *KORM_test05UserGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_DeleteObj_UserId) GreaterOrEqual(UserId string) *KORM_test05UserGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_DeleteObj_UserId) Less(UserId string) *KORM_test05UserGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_DeleteObj_UserId) LessOrEqual(UserId string) *KORM_test05UserGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`UserId` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
@@ -12573,49 +21636,179 @@ func (this *KORM_Where_KORM_test05UserGroup_D_DeleteObj_UserId) In(vList []strin
 	return this.supper
 }
 
+type KORM_Where_KORM_test05UserGroup_D_DeleteObj_UserId_Length struct {
+	supper      *KORM_test05UserGroup_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test05UserGroup_D_DeleteObj_UserId) Length() *KORM_Where_KORM_test05UserGroup_D_DeleteObj_UserId_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test05UserGroup_D_DeleteObj_UserId_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test05UserGroup_D_DeleteObj_UserId_Length) Equal(length int) *KORM_test05UserGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserGroup_D_DeleteObj_UserId_Length) NotEqual(length int) *KORM_test05UserGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserGroup_D_DeleteObj_UserId_Length) GreaterOrEqual(length int) *KORM_test05UserGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserGroup_D_DeleteObj_UserId_Length) Less(length int) *KORM_test05UserGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserGroup_D_DeleteObj_UserId_Length) LessOrEqual(length int) *KORM_test05UserGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test05UserGroup_D_DeleteObj_GroupId struct {
-	supper *KORM_test05UserGroup_D_DeleteObj
+	supper      *KORM_test05UserGroup_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05UserGroup_D_DeleteObj) Where_GroupId() *KORM_Where_KORM_test05UserGroup_D_DeleteObj_GroupId {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`GroupId` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test05UserGroup_D_DeleteObj_GroupId{supper: this}
+	return &KORM_Where_KORM_test05UserGroup_D_DeleteObj_GroupId{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_DeleteObj_GroupId) Equal(GroupId string) *KORM_test05UserGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_DeleteObj_GroupId) NotEqual(GroupId string) *KORM_test05UserGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_DeleteObj_GroupId) Greater(GroupId string) *KORM_test05UserGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_DeleteObj_GroupId) GreaterOrEqual(GroupId string) *KORM_test05UserGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_DeleteObj_GroupId) Less(GroupId string) *KORM_test05UserGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_DeleteObj_GroupId) LessOrEqual(GroupId string) *KORM_test05UserGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`GroupId` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId)
 	return this.supper
@@ -12637,48 +21830,169 @@ func (this *KORM_Where_KORM_test05UserGroup_D_DeleteObj_GroupId) In(vList []stri
 	return this.supper
 }
 
+type KORM_Where_KORM_test05UserGroup_D_DeleteObj_GroupId_Length struct {
+	supper      *KORM_test05UserGroup_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test05UserGroup_D_DeleteObj_GroupId) Length() *KORM_Where_KORM_test05UserGroup_D_DeleteObj_GroupId_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test05UserGroup_D_DeleteObj_GroupId_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test05UserGroup_D_DeleteObj_GroupId_Length) Equal(length int) *KORM_test05UserGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserGroup_D_DeleteObj_GroupId_Length) NotEqual(length int) *KORM_test05UserGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserGroup_D_DeleteObj_GroupId_Length) GreaterOrEqual(length int) *KORM_test05UserGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserGroup_D_DeleteObj_GroupId_Length) Less(length int) *KORM_test05UserGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserGroup_D_DeleteObj_GroupId_Length) LessOrEqual(length int) *KORM_test05UserGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test05UserGroup_D_DeleteObj_CreateTime struct {
-	supper *KORM_test05UserGroup_D_DeleteObj
+	supper      *KORM_test05UserGroup_D_DeleteObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05UserGroup_D_DeleteObj) Where_CreateTime() *KORM_Where_KORM_test05UserGroup_D_DeleteObj_CreateTime {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString("`CreateTime` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test05UserGroup_D_DeleteObj_CreateTime{supper: this}
+	return &KORM_Where_KORM_test05UserGroup_D_DeleteObj_CreateTime{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_DeleteObj_CreateTime) Equal(CreateTime time.Time) *KORM_test05UserGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_DeleteObj_CreateTime) NotEqual(CreateTime time.Time) *KORM_test05UserGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_DeleteObj_CreateTime) GreaterOrEqual(CreateTime time.Time) *KORM_test05UserGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_DeleteObj_CreateTime) Less(CreateTime time.Time) *KORM_test05UserGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserGroup_D_DeleteObj_CreateTime) LessOrEqual(CreateTime time.Time) *KORM_test05UserGroup_D_DeleteObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
@@ -12756,48 +22070,96 @@ func (this *KORM_test05UserInGroup_V) Select() *KORM_test05UserInGroup_V_SelectO
 }
 
 type KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserId struct {
-	supper *KORM_test05UserInGroup_V_SelectObj
+	supper      *KORM_test05UserInGroup_V_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05UserInGroup_V_SelectObj) Where_UserId() *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserId {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.query.joinNode.TableName + `.` + "`UserId` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserId{supper: this}
+	return &KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserId{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserId) Equal(UserId string) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`UserId` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserId) NotEqual(UserId string) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`UserId` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserId) Greater(UserId string) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`UserId` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserId) GreaterOrEqual(UserId string) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`UserId` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserId) Less(UserId string) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`UserId` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserId) LessOrEqual(UserId string) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`UserId` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserId)
 	return this.supper
@@ -12819,49 +22181,179 @@ func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserId) In(vList []str
 	return this.supper
 }
 
+type KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserId_Length struct {
+	supper      *KORM_test05UserInGroup_V_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserId) Length() *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserId_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserId_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserId_Length) Equal(length int) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserId_Length) NotEqual(length int) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserId_Length) GreaterOrEqual(length int) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserId_Length) Less(length int) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserId_Length) LessOrEqual(length int) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`UserId`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupId2 struct {
-	supper *KORM_test05UserInGroup_V_SelectObj
+	supper      *KORM_test05UserInGroup_V_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05UserInGroup_V_SelectObj) Where_GroupId2() *KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupId2 {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.query.joinNode.TableName + `.` + "`GroupId` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupId2{supper: this}
+	return &KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupId2{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupId2) Equal(GroupId2 string) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`GroupId` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId2)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupId2) NotEqual(GroupId2 string) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`GroupId` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId2)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupId2) Greater(GroupId2 string) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`GroupId` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId2)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupId2) GreaterOrEqual(GroupId2 string) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`GroupId` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId2)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupId2) Less(GroupId2 string) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`GroupId` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId2)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupId2) LessOrEqual(GroupId2 string) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`GroupId` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupId2)
 	return this.supper
@@ -12883,49 +22375,179 @@ func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupId2) In(vList []s
 	return this.supper
 }
 
+type KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupId2_Length struct {
+	supper      *KORM_test05UserInGroup_V_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupId2) Length() *KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupId2_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupId2_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupId2_Length) Equal(length int) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupId2_Length) NotEqual(length int) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupId2_Length) GreaterOrEqual(length int) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupId2_Length) Less(length int) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupId2_Length) LessOrEqual(length int) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`GroupId`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserAge struct {
-	supper *KORM_test05UserInGroup_V_SelectObj
+	supper      *KORM_test05UserInGroup_V_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05UserInGroup_V_SelectObj) Where_UserAge() *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserAge {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.node_2.joinNode.TableName + `.` + "`Age` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserAge{supper: this}
+	return &KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserAge{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserAge) Equal(UserAge uint16) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.node_2.joinNode.TableName + `.` + "`Age` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserAge)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserAge) NotEqual(UserAge uint16) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.node_2.joinNode.TableName + `.` + "`Age` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserAge)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserAge) Greater(UserAge uint16) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.node_2.joinNode.TableName + `.` + "`Age` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserAge)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserAge) GreaterOrEqual(UserAge uint16) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.node_2.joinNode.TableName + `.` + "`Age` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserAge)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserAge) Less(UserAge uint16) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.node_2.joinNode.TableName + `.` + "`Age` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserAge)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserAge) LessOrEqual(UserAge uint16) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.node_2.joinNode.TableName + `.` + "`Age` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserAge)
 	return this.supper
@@ -12948,48 +22570,96 @@ func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserAge) In(vList []ui
 }
 
 type KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserName struct {
-	supper *KORM_test05UserInGroup_V_SelectObj
+	supper      *KORM_test05UserInGroup_V_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05UserInGroup_V_SelectObj) Where_UserName() *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserName {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.node_2.joinNode.TableName + `.` + "`Name` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserName{supper: this}
+	return &KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserName{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserName) Equal(UserName string) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.node_2.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserName)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserName) NotEqual(UserName string) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.node_2.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserName)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserName) Greater(UserName string) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.node_2.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserName)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserName) GreaterOrEqual(UserName string) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.node_2.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserName)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserName) Less(UserName string) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.node_2.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserName)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserName) LessOrEqual(UserName string) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.node_2.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, UserName)
 	return this.supper
@@ -13011,49 +22681,179 @@ func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserName) In(vList []s
 	return this.supper
 }
 
+type KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserName_Length struct {
+	supper      *KORM_test05UserInGroup_V_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserName) Length() *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserName_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserName_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserName_Length) Equal(length int) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.node_2.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserName_Length) NotEqual(length int) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.node_2.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserName_Length) GreaterOrEqual(length int) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.node_2.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserName_Length) Less(length int) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.node_2.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_UserName_Length) LessOrEqual(length int) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.node_2.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupName struct {
-	supper *KORM_test05UserInGroup_V_SelectObj
+	supper      *KORM_test05UserInGroup_V_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05UserInGroup_V_SelectObj) Where_GroupName() *KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupName {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.node_4.joinNode.TableName + `.` + "`Name` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupName{supper: this}
+	return &KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupName{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupName) Equal(GroupName string) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.node_4.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupName)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupName) NotEqual(GroupName string) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.node_4.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupName)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupName) Greater(GroupName string) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.node_4.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupName)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupName) GreaterOrEqual(GroupName string) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.node_4.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupName)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupName) Less(GroupName string) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.node_4.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupName)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupName) LessOrEqual(GroupName string) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.node_4.joinNode.TableName + `.` + "`Name` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, GroupName)
 	return this.supper
@@ -13075,48 +22875,169 @@ func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupName) In(vList []
 	return this.supper
 }
 
+type KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupName_Length struct {
+	supper      *KORM_test05UserInGroup_V_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupName) Length() *KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupName_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupName_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupName_Length) Equal(length int) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.node_4.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupName_Length) NotEqual(length int) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.node_4.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupName_Length) GreaterOrEqual(length int) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.node_4.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupName_Length) Less(length int) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.node_4.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_GroupName_Length) LessOrEqual(length int) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.node_4.joinNode.TableName + `.` + "`Name`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test05UserInGroup_V_SelectObj_CreateTime struct {
-	supper *KORM_test05UserInGroup_V_SelectObj
+	supper      *KORM_test05UserInGroup_V_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05UserInGroup_V_SelectObj) Where_CreateTime() *KORM_Where_KORM_test05UserInGroup_V_SelectObj_CreateTime {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.query.joinNode.TableName + `.` + "`CreateTime` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test05UserInGroup_V_SelectObj_CreateTime{supper: this}
+	return &KORM_Where_KORM_test05UserInGroup_V_SelectObj_CreateTime{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_CreateTime) Equal(CreateTime time.Time) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_CreateTime) NotEqual(CreateTime time.Time) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_CreateTime) GreaterOrEqual(CreateTime time.Time) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_CreateTime) Less(CreateTime time.Time) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserInGroup_V_SelectObj_CreateTime) LessOrEqual(CreateTime time.Time) *KORM_test05UserInGroup_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`CreateTime` ")
+
 	vCreateTime := CreateTime.UTC().Format(time.RFC3339Nano)
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, vCreateTime)
@@ -13553,48 +23474,96 @@ func (this *KORM_test05UserAge_V) Select() *KORM_test05UserAge_V_SelectObj {
 }
 
 type KORM_Where_KORM_test05UserAge_V_SelectObj_Id struct {
-	supper *KORM_test05UserAge_V_SelectObj
+	supper      *KORM_test05UserAge_V_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05UserAge_V_SelectObj) Where_Id() *KORM_Where_KORM_test05UserAge_V_SelectObj_Id {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.query.joinNode.TableName + `.` + "`Id` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test05UserAge_V_SelectObj_Id{supper: this}
+	return &KORM_Where_KORM_test05UserAge_V_SelectObj_Id{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test05UserAge_V_SelectObj_Id) Equal(Id string) *KORM_test05UserAge_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserAge_V_SelectObj_Id) NotEqual(Id string) *KORM_test05UserAge_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserAge_V_SelectObj_Id) Greater(Id string) *KORM_test05UserAge_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserAge_V_SelectObj_Id) GreaterOrEqual(Id string) *KORM_test05UserAge_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserAge_V_SelectObj_Id) Less(Id string) *KORM_test05UserAge_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserAge_V_SelectObj_Id) LessOrEqual(Id string) *KORM_test05UserAge_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Id` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Id)
 	return this.supper
@@ -13616,49 +23585,179 @@ func (this *KORM_Where_KORM_test05UserAge_V_SelectObj_Id) In(vList []string) *KO
 	return this.supper
 }
 
+type KORM_Where_KORM_test05UserAge_V_SelectObj_Id_Length struct {
+	supper      *KORM_test05UserAge_V_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
+}
+
+func (this *KORM_Where_KORM_test05UserAge_V_SelectObj_Id) Length() *KORM_Where_KORM_test05UserAge_V_SelectObj_Id_Length {
+	isLinkBeginValue := this.isLinkBegin
+	this.isLinkBegin = false
+	return &KORM_Where_KORM_test05UserAge_V_SelectObj_Id_Length{supper: this.supper, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
+}
+func (this *KORM_Where_KORM_test05UserAge_V_SelectObj_Id_Length) Equal(length int) *KORM_test05UserAge_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserAge_V_SelectObj_Id_Length) NotEqual(length int) *KORM_test05UserAge_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("!=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserAge_V_SelectObj_Id_Length) GreaterOrEqual(length int) *KORM_test05UserAge_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString(">=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserAge_V_SelectObj_Id_Length) Less(length int) *KORM_test05UserAge_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("<? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+func (this *KORM_Where_KORM_test05UserAge_V_SelectObj_Id_Length) LessOrEqual(length int) *KORM_test05UserAge_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString("length(" + this.supper.joinNode.TableName + `.` + "`Id`) ")
+
+	this.supper.bufWhere.WriteString("<=? ")
+	this.supper.argsWhere = append(this.supper.argsWhere, length)
+	return this.supper
+}
+
 type KORM_Where_KORM_test05UserAge_V_SelectObj_Age struct {
-	supper *KORM_test05UserAge_V_SelectObj
+	supper      *KORM_test05UserAge_V_SelectObj
+	isLinkBegin bool
+	linkOpList  []string
 }
 
 func (this *KORM_test05UserAge_V_SelectObj) Where_Age() *KORM_Where_KORM_test05UserAge_V_SelectObj_Age {
-	if this.bufWhere.Len() > 0 {
-		if this.isLinkBegin == false {
-			this.bufWhere.WriteString(this.linkOpList[0] + " ")
-		}
-	} else {
-		this.bufWhere.WriteString("WHERE ")
-	}
-	this.bufWhere.WriteString(this.query.joinNode.TableName + `.` + "`Age` ")
-
+	isLinkBeginValue := this.isLinkBegin
 	this.isLinkBegin = false
-	return &KORM_Where_KORM_test05UserAge_V_SelectObj_Age{supper: this}
+	return &KORM_Where_KORM_test05UserAge_V_SelectObj_Age{supper: this, isLinkBegin: isLinkBeginValue, linkOpList: this.linkOpList}
 }
 func (this *KORM_Where_KORM_test05UserAge_V_SelectObj_Age) Equal(Age int16) *KORM_test05UserAge_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Age` ")
+
 	this.supper.bufWhere.WriteString("=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Age)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserAge_V_SelectObj_Age) NotEqual(Age int16) *KORM_test05UserAge_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Age` ")
+
 	this.supper.bufWhere.WriteString("!=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Age)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserAge_V_SelectObj_Age) Greater(Age int16) *KORM_test05UserAge_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Age` ")
+
 	this.supper.bufWhere.WriteString(">? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Age)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserAge_V_SelectObj_Age) GreaterOrEqual(Age int16) *KORM_test05UserAge_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Age` ")
+
 	this.supper.bufWhere.WriteString(">=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Age)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserAge_V_SelectObj_Age) Less(Age int16) *KORM_test05UserAge_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Age` ")
+
 	this.supper.bufWhere.WriteString("<? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Age)
 	return this.supper
 }
 func (this *KORM_Where_KORM_test05UserAge_V_SelectObj_Age) LessOrEqual(Age int16) *KORM_test05UserAge_V_SelectObj {
+	if this.supper.bufWhere.Len() > 0 {
+		if this.isLinkBegin == false {
+			this.supper.bufWhere.WriteString(this.linkOpList[0] + " ")
+		}
+	} else {
+		this.supper.bufWhere.WriteString("WHERE ")
+	}
+	this.supper.bufWhere.WriteString(this.supper.joinNode.TableName + `.` + "`Age` ")
+
 	this.supper.bufWhere.WriteString("<=? ")
 	this.supper.argsWhere = append(this.supper.argsWhere, Age)
 	return this.supper

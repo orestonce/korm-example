@@ -22,12 +22,13 @@ func main() {
 		korm_example.Test02MultiplePk(db)
 		korm_example.Test03LeftJoin(db)
 		korm_example.Test05View(db)
+		korm_example.Test06FnLength(db)
 		fmt.Println("done", idx)
 	}
 }
 
 func initDbSqlite() *korm_example.OrmAll {
-	const f = "D:/1234.sqlite3"
+	const f = "./1234.sqlite3"
 	os.Remove(f)
 	db, err := sql.Open("sqlite", f)
 	if err != nil {
